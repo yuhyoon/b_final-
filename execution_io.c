@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "child_process.h"
-#include "execution.h"
-#include "error.h"
+#include "main.h"
 
 void	close_pp(t_child_process *child, t_minish *sh)
 {

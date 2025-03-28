@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "analysis.h"
-#include "error.h"
+#include "main.h"
 
 t_redrct	*init_rdrct(void)
 {

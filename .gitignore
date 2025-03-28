@@ -2,3 +2,5 @@
 libft.a
 minishell
 libft/libft.a
+analysis_heredoc_copy.c
+.vscode/settings.json

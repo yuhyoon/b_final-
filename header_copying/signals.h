@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   analysis_heredoc_utils.c                           :+:      :+:    :+:   */
+/*   signals.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 17:08:55 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 04:41:40 by hyeyeom          ###   ########.fr       */
+/*   Created: 2025/02/23 20:55:43 by hyeyeom           #+#    #+#             */
+/*   Updated: 2025/03/23 17:26:18 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef SIGNALS_H
+# define SIGNALS_H
 
-#include "main.h"
+# include "main.h"
 
-void    restore_terminal(void)
-{
-    int     tty_fd;
-    char    *tty_path;
+// void	set_signal_fork(void);
+// void	before_readline(int signal);
+// void	set_signal(void *handler);
+// void	set_signal_cat_grep(void *handler);
+// void	set_signal_heredoc(void);
+// void	set_signal_fork_heredoc(void);
 
-    tty_path = ttyname(0);
-    if (tty_path)
-    {
-        tty_fd = open(tty_path, O_RDWR);
-        if (tty_fd != -1)
-        {
-            dup2(tty_fd, 0);
-            close(tty_fd);
-        }
-    }
-}
-
-void    close_fd(int fd)
-{
-    if (close(fd) == -1)
-        exit(EXIT_FAILURE);
-}
+#endif

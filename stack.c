@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "main.h"
 
 void	init_stack(t_stack *stack, void *top, int size)
 {

@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "main.h"
-#include "parse.h"
-#include "analysis.h"
-#include "parse_step.h"
-#include "execution.h"
 
 void	*create_rdy(void)
 {

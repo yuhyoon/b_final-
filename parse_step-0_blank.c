@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "main.h"
-#include "parse_utils.h"
-#include "parse.h"
 
 char	*check_blank(char *mask)
 {

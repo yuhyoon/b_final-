@@ -11,13 +11,6 @@
 /* ************************************************************************** */
 
 #include "main.h"
-#include "parse.h"
-#include "parse_step.h"
-#include "analysis.h"
-#include "execution.h"
-#include "error.h"
-#include "free.h"
-#include "child_process.h"
 
 void	init_minish(t_minish *sh, char **envp)
 {

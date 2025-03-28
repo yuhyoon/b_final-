@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "analysis.h"
+#include "main.h"
 
 void	handle_heredoc_child(int write_fd, char *delimeter)
 {

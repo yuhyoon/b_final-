@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
-#include "error.h"
+#include "main.h"
 
 void	free_splited(char **abs)
 {

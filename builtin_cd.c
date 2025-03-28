@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "main.h"
-#include "builtin.h"
-#include "a_static.h"
 
 int	f_cd_root(void)
 {

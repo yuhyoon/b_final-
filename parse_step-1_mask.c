@@ -11,13 +11,6 @@
 /* ************************************************************************** */
 
 #include "main.h"
-#include "parse.h"
-#include "parse_step.h"
-#include "stack.h"
-#include "analysis.h"
-#include "parse_utils.h"
-#include "error.h"
-#include "free.h"
 
 int	handle_putchar(t_char_state *char_state, int fd)
 {

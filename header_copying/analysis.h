@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_step-1_utils2.c                              :+:      :+:    :+:   */
+/*   analysis.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 08:57:28 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 08:57:29 by yuhyoon          ###   ########.fr       */
+/*   Created: 2025/03/26 13:11:32 by yuhyoon           #+#    #+#             */
+/*   Updated: 2025/03/28 09:21:44 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef ANALYSIS_H
+# define ANALYSIS_H
 
-char	*syntax_result2(t_minish *sh, int result, char *mask)
-{
-	if (result > 0)
-	{
-		free(mask);
-		mask = NULL;
-		sh->exitcode = result;
-		err_syntax(result);
-		return (NULL);
-	}
-	return (mask);
-}
+# include "parse.h"
+# include "parse_utils.h"
+
+#endif

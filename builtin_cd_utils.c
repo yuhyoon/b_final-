@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "main.h"
 
 int	update_envps(t_minish *sh, char *newpwd, char *oldpwd)
 {

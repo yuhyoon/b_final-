@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_step-1_utils2.c                              :+:      :+:    :+:   */
+/*   delete.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 08:57:28 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 08:57:29 by yuhyoon          ###   ########.fr       */
+/*   Created: 2025/03/26 13:52:43 by yuhyoon           #+#    #+#             */
+/*   Updated: 2025/03/26 13:52:44 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef DELETE_H
+# define DELETE_H
 
-char	*syntax_result2(t_minish *sh, int result, char *mask)
-{
-	if (result > 0)
-	{
-		free(mask);
-		mask = NULL;
-		sh->exitcode = result;
-		err_syntax(result);
-		return (NULL);
-	}
-	return (mask);
-}
+# include "parse.h"
+# include "stack.h"
+
+void	del_text(void *txt);
+void	del_redrct(void *rd);
+void	del_ready(void *ready);
+void	del_stack(void *st);
+
+#endif

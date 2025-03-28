@@ -37,7 +37,6 @@ void			exit_err_msg(char *copy_str, int code);
 long long		check_exit_cmd(char *second_cmd);
 void			f_exit_only(int exitcode);
 void			f_exit_with_msg(int size, char *second_cmd);
-int				f_exit(t_minish *sh, t_ready *rdy);
 
 void			bubble_sort_envp(char **envp, int count);
 void			f_sort_and_store_envp(char **envp, t_envp **sorted_envp);

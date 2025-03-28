@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "analysis.h"
-#include "builtin.h"
+#include "main.h"
 
 int	count_text(char *mask)
 {

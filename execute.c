@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "child_process.h"
-#include "execution.h"
-#include "free.h"
-#include "signals.h"
+#include "main.h"
 
 void	redirect_input_b(t_ready *rdy, int *io)
 {

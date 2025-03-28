@@ -1,5 +1,4 @@
 #include "main.h"
-#include "a_static.h"
 
 int *f_exitcode(void)
 {

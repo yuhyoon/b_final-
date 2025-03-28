@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_step-1_utils2.c                              :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 08:57:28 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 08:57:29 by yuhyoon          ###   ########.fr       */
+/*   Created: 2025/03/26 14:17:45 by yuhyoon           #+#    #+#             */
+/*   Updated: 2025/03/26 14:19:06 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef PARSE_H
+# define PARSE_H
 
-char	*syntax_result2(t_minish *sh, int result, char *mask)
-{
-	if (result > 0)
-	{
-		free(mask);
-		mask = NULL;
-		sh->exitcode = result;
-		err_syntax(result);
-		return (NULL);
-	}
-	return (mask);
-}
+# include "main.h"
+
+#endif

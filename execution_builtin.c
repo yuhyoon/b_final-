@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "child_process.h"
-#include "a_static.h"
+#include "main.h"
 
 int	execute_bulitin(t_child_process *child, t_minish *sh, t_ready *rdy)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "analysis.h"
+#include "main.h"
 
 int	valid_meta(int token, char *mask)
 {

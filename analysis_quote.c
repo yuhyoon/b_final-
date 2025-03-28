@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "analysis.h"
-#include "stack.h"
+#include "main.h"
 
 int	set_char_state(char *s, t_char_state *char_state)
 {

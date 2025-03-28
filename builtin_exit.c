@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "main.h"
 
 void	exit_err_msg(char *copy_str, int code)
 {

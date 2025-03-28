@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "delete.h"
-#include "free.h"
+#include "main.h"
 
 void	del_text(void *txt)
 {

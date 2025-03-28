@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_step-1_utils2.c                              :+:      :+:    :+:   */
+/*   free.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 08:57:28 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 08:57:29 by yuhyoon          ###   ########.fr       */
+/*   Created: 2025/03/28 09:01:55 by yuhyoon           #+#    #+#             */
+/*   Updated: 2025/03/28 09:03:38 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef FREE_H
+# define FREE_H
 
-char	*syntax_result2(t_minish *sh, int result, char *mask)
-{
-	if (result > 0)
-	{
-		free(mask);
-		mask = NULL;
-		sh->exitcode = result;
-		err_syntax(result);
-		return (NULL);
-	}
-	return (mask);
-}
+# include "main.h"
+
+// void	dengling(void *content, int size_type);
+// void	free_minish(t_minish *minish);
+// void	free_str_array(char **arr);
+// void	free_envps(t_envp **node);
+// void	free_init_envps(t_minish *sh);
+
+#endif

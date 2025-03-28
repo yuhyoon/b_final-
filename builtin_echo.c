@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
-#include "execution.h"
-#include "child_process.h"
+#include "main.h"
 
 void	f_print_echo(char **param_list, int option_off)
 {

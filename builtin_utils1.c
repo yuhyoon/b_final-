@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "main.h"
 
 void	update_envp_array(t_minish *sh, char *cmd)
 {

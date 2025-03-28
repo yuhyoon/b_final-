@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "main.h"
-#include "parse.h"
-#include "a_static.h"
 
 void	err_such(int exit, char *obj)
 {

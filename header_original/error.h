@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_step-1_utils2.c                              :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 08:57:28 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 08:57:29 by yuhyoon          ###   ########.fr       */
+/*   Created: 2025/03/26 13:53:27 by yuhyoon           #+#    #+#             */
+/*   Updated: 2025/03/26 13:56:45 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-char	*syntax_result2(t_minish *sh, int result, char *mask)
-{
-	if (result > 0)
-	{
-		free(mask);
-		mask = NULL;
-		sh->exitcode = result;
-		err_syntax(result);
-		return (NULL);
-	}
-	return (mask);
-}
+# include "main.h"
+# include "parse.h"
+
+void	err_such(int exit, char *obj);
+void	err_permission(int exit, char *obj);
+void	err_exec(int exit, char *cmd_name);
+void	err_syntax(int syntax_result);
+
+#endif

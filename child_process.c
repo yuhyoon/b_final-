@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "child_process.h"
-#include "execution.h"
-#include "free.h"
+#include "main.h"
 
 int	is_dir(char *exe_path)
 {

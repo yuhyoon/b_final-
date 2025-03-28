@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "main.h"
 
 void	delete_double_char(t_minish *sh, char *cmd)
 {
