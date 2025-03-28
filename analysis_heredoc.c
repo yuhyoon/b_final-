@@ -18,7 +18,8 @@ void	handle_heredoc_child(int write_fd, char *delimeter)
 
 	close_fd(write_fd - 1);
 	set_signal_heredoc();
-	while ((line = readline("> ")))
+	line = readline("> ");
+	while (line != NULL)
 	{
 		if (!line)
 		{
@@ -51,7 +52,8 @@ void	create_heredoc_pipe(int *read_fd, int *write_fd)
 	*write_fd = fd[1];
 }
 
-void	handle_heredoc_parent(t_redrct *rdrct, int read_fd, int write_fd, int *sig_c)
+void	handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
+	int write_fd, int *sig_c)
 {
 	int	status;
 
