@@ -6,11 +6,10 @@
 /*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/26 15:37:05 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/28 12:21:57 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//header는 합칠때 다시 만지기...
 #include "builtin.h"
 
 int	update_envps(t_minish *sh, char *newpwd, char *oldpwd)
@@ -110,22 +109,4 @@ int	f_cd_process_params(t_minish *sh, t_list *commands)
 		return (1);
 	}
 	return (0);
-}
-
-int	f_cd(t_minish *sh)
-{
-	int		res;
-	char	*current_pwd;
-	t_list	*commands;
-
-	res = -1;
-	current_pwd = getcwd(NULL, 0);
-	if (!current_pwd)
-		return (1);
-	commands = (((t_ready *)(sh->ready->content))->text);
-	res = f_cd_process_params(sh, commands);
-	if (res == 0)
-		f_update_pwds(sh, current_pwd);
-	free(current_pwd);
-	return (res);
 }

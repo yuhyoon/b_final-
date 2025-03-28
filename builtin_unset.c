@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
+/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 21:10:39 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/18 12:46:00 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/03/28 12:22:19 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "builtin.h"
 
-void delete_double_char(t_minish *sh, char *cmd)
+void	delete_double_char(t_minish *sh, char *cmd)
 {
 	int		len_arr;
 	int		i;
@@ -36,7 +36,7 @@ void delete_double_char(t_minish *sh, char *cmd)
 	free(name);
 }
 
-int f_unset(t_minish *sh)
+int	f_unset(t_minish *sh)
 {
 	char	**cmds;
 	int		size;

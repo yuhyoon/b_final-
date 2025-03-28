@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
+/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/13 23:10:37 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/03/28 12:22:20 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-//노드 free (free_minish)
-void	free_node_t_envp(t_envp **envp) //전이름 : free_n_envps
+void	free_node_t_envp(t_envp **envp)
 {
-	t_envp *current;
-	t_envp *next;
+	t_envp	*current;
+	t_envp	*next;
 
 	current = *envp;
 	while (current)
@@ -31,10 +30,9 @@ void	free_node_t_envp(t_envp **envp) //전이름 : free_n_envps
 	*envp = NULL;
 }
 
-//더블차 갯수
 int	f_count_char(char **envp)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (envp[count])
@@ -42,15 +40,14 @@ int	f_count_char(char **envp)
 	return (count);
 }
 
-//더블차 free
 void	free_double_char(char **double_char)
 {
-    int i;
-    int length;
+	int	i;
+	int	length;
 
 	i = -1;
 	length = f_count_char(double_char);
 	while (++i < length)
-        free(double_char[i]);
-    free(double_char); 
+		free(double_char[i]);
+	free(double_char);
 }

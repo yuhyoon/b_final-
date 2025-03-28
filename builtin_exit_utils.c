@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_exit.c                                     :+:      :+:    :+:   */
+/*   builtin_exit_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "builtin.h"
 
 long long	ft_atol(char *str)
 {
@@ -36,8 +36,7 @@ long long	ft_atol(char *str)
 	return (sign * res);
 }
 
-
-int	check_input_range(char *arvs)
+long long	check_input_range(char *arvs)
 {
 	int			z_cnt;
 	int			length;
@@ -50,10 +49,7 @@ int	check_input_range(char *arvs)
 		z_cnt++;
 	length = ft_strlen(arvs);
 	if (length == z_cnt)
-		return (1); //모든 수가 0일때
+		return (0);
 	arv_atol = ft_atol(arvs);
-    printf("%lld\n", arv_atol);
-	if (ft_strlen(arvs + z_cnt) > 10)
-        return (0); // 에러
 	return (1);
 }
