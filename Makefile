@@ -38,6 +38,9 @@ SRCS 			= main.c \
 				builtin_cd_utils.c \
 				builtin_echo.c \
 				builtin_export.c \
+				builtin_export_utils.c \
+				builtin_export_utils1.c \
+				builtin_export_utils2.c \
 				builtin_pwd.c \
 				builtin_unset.c \
 				builtin_utils.c \
@@ -47,7 +50,6 @@ SRCS 			= main.c \
 				bulitin_env.c \
 				builtin_exit.c \
 				builtin_exit_utils.c \
-				builtin_export_utils.c \
 				
 
 all: 			$(LIBFTA) $(NAME)
