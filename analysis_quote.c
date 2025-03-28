@@ -6,7 +6,7 @@
 /*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:59:38 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/27 08:21:57 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/28 13:30:34 by yuhyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	read_store_fd(int replace_fd, int quote_fd)
 	size = st.st_size;
 	close(quote_fd);
 	quote_fd = open("quote_fd", O_RDONLY, 0644);
-	if (quote_fd == -1)
-		printf("quotefd: %d\n", quote_fd);
 	buf = malloc(sizeof(char) * size);
 	read(quote_fd, buf, size);
 	while (i < size)

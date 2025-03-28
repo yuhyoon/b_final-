@@ -39,14 +39,12 @@ void	set_pipe(t_child_process *child, t_minish *sh)
 	}
 	if (child->num < sh->cmd_count && sh->cmd_count > 1)
 	{
-		printf("dup2\n");
 		dup2(child->pp[1], child->output_fd);
 		close(child->pp[1]);
 		close(child->pp[0]);
 	}
 	if (child->bulitin_code > 0)
 	{
-		printf("builtin\n");
 		child->state = STATE_EXEC_BUILTIN;
 	}
 	else
