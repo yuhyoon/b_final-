@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   analysis_heredoc.c                                 :+:      :+:    :+:   */
+/*   analysis_heredoc_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.gyeongsan>     +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:08:55 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/23 17:08:55 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/28 04:41:40 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void    restore_terminal(void)
 {
     int     tty_fd;
     char    *tty_path;
-    
+
     tty_path = ttyname(0);
     if (tty_path)
     {
@@ -29,8 +29,8 @@ void    restore_terminal(void)
     }
 }
 
-void	close_fd(int fd)
+void    close_fd(int fd)
 {
-	if (close(fd) == -1)
-		exit(EXIT_FAILURE);
+    if (close(fd) == -1)
+        exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:55:43 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/23 17:26:18 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/03/28 04:39:53 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void	before_readline(int signal)
 		rl_on_new_line();
 		rl_redisplay();
 		*f_exitcode() = 130;
-		// *f_exitcode() = 130;
 	}
 }
-
 
 void	set_signal(void *handler)
 {
@@ -46,7 +44,7 @@ void	after_cat_grep_c(int signal)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		// *f_exitcode()
+		*f_exitcode() = 130;
 	}
 	if (signal == SIGQUIT)
 	{
@@ -54,15 +52,12 @@ void	after_cat_grep_c(int signal)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		// *f_exitcode()
+		*f_exitcode() = 131;
 	}
 }
 
 void	set_signal_cat_grep(void *handler)
 {
-	// signal(SIGINT, SIG_DFL);
-	// signal(SIGQUIT, SIG_DFL);
 	signal(SIGINT, handler);
 	signal(SIGQUIT, handler);
 }
-
