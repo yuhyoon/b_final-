@@ -22,6 +22,7 @@ SRCS 			= main.c \
 				analysis_syntax.c \
 				analysis_dollar.c \
 				execute.c \
+				execute_utils.c \
 				execution_cmd.c \
 				execution_redirect.c \
 				execution_io.c \
