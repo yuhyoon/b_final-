@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:54:05 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/28 04:37:27 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 void	f_print_echo(char **param_list, int option_off)
 {
+	printf("-------- %s\n", *param_list);
 	while (*param_list)
 	{
 		write(STDOUT_FILENO, *param_list, ft_strlen(*param_list));
@@ -52,6 +53,7 @@ int	check_n_option(char **cmds, int size)
 	i = 1;
 	while (i < size)
 	{
+		printf("----- %s\n", cmds[i]);
 		if (f_check_n_option(cmds[i]) == 1)
 			flag = 1;
 		else
@@ -66,6 +68,7 @@ void	process_echo(char **cmds, int size)
 	int		start_idx;
 	int		flag;
 
+	flag = 0;
 	start_idx = check_n_option(cmds, size);
 	if (start_idx != size)
 		flag = 1;
