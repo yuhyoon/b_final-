@@ -24,7 +24,9 @@ int	update_envps(t_minish *sh, char *newpwd, char *oldpwd)
 	if (!opwd)
 		return (-1);
 	update_or_add_envps(sh, npwd);
+	free(npwd);
 	update_or_add_envps(sh, opwd);
+	free(opwd);
 	return (0);
 }
 
