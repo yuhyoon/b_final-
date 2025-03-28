@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export_utils2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 01:49:16 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 13:18:11 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/28 18:01:51 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_valid_name(char *name)
 	int	valid;	
 	int	flag;
 	int	i;
-	
+
 	i = 0;
 	flag = 0;
 	valid = ft_isalnum(name[0]);
@@ -28,7 +28,7 @@ int	is_valid_name(char *name)
 		if (name[i] == '=')
 		{
 			flag = 1;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -44,7 +44,8 @@ size_t	find_cmd_in_original(char *original_cmd, char *cmd, size_t index_stack)
 	char	*find_in_o_cmd;
 	int		res;
 
-	find_in_o_cmd = ft_strnstr(&(original_cmd[index_stack]), cmd, ft_strlen(original_cmd));
+	find_in_o_cmd = ft_strnstr(&(original_cmd[index_stack]), cmd, \
+	ft_strlen(original_cmd));
 	res = (find_in_o_cmd - original_cmd) + 1;
 	return (res);
 }
@@ -70,10 +71,11 @@ int	handle_name_case(char **cmd, char *original_cmd, int tmp_i, t_minish *sh)
 	return (0);
 }
 
-int	process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish *sh)
+int	process_envp_update(char **cmd, char *original_cmd, \
+	int is_name, t_minish *sh)
 {
-	int tmp_i;
-	int case_is_name_1;
+	int	tmp_i;
+	int	case_is_name_1;
 
 	case_is_name_1 = 0;
 	tmp_i = ft_strlen(*cmd) + 1;
@@ -100,8 +102,10 @@ void	export_update_or_add(char **cmds, char *original_cmd, t_minish *sh)
 	while (*current_cmd != NULL)
 	{
 		is_name = is_valid_name(*current_cmd);
-		index_stack = find_cmd_in_original(original_cmd, *current_cmd, index_stack);
-		is_value = process_envp_update(current_cmd, original_cmd, is_name, sh);
+		index_stack = find_cmd_in_original(original_cmd, \
+			*current_cmd, index_stack);
+		is_value = process_envp_update(current_cmd, \
+			original_cmd, is_name, sh);
 		if (is_value == 2)
 			current_cmd++;
 		else if (is_value == -1)
