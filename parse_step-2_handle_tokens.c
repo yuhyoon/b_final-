@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_step-2_handle_tokens.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:15:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 09:29:05 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/28 18:31:10 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 	return (1);
 }
 
+//함수 분리 요망 ! (TOO_MANY_LINES)
 void	*parsing(t_minish *sh, int len)
 {
 	int		i;
