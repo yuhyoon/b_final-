@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_export_utils.c                                   :+:      :+:    :+:   */
+/*   builtin_export_utils1.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 01:49:16 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/26 15:33:27 by yuhyoon          ###   ########.fr       */
+/*   Created: 2025/03/28 17:59:34 by hyeyeom           #+#    #+#             */
+/*   Updated: 2025/03/28 18:00:31 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	bubble_sort_envp(char **envp, int count)
 {
-	int i;
-	int j;
-	char *temp;
+	int		i;
+	int		j;
+	char	*temp;
 
 	i = 0;
 	while (i < count - 1)
@@ -46,10 +46,10 @@ void	f_sort_and_store_envp(char **envp, t_envp **sorted_envp)
 	i = -1;
 	sorted_envp_array = NULL;
 	if (!envp || !sorted_envp)
-		return;
+		return ;
 	sorted_envp_array = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!sorted_envp_array)
-		return;
+		return ;
 	while (++i < count)
 		sorted_envp_array[i] = ft_strdup(envp[i]);
 	sorted_envp_array[i] = NULL;
@@ -60,8 +60,8 @@ void	f_sort_and_store_envp(char **envp, t_envp **sorted_envp)
 
 void	export_err_msg(char *cmds)
 {
-	int i;
-	int size;
+	int	i;
+	int	size;
 
 	i = -1;
 	size = ft_strlen(cmds);
@@ -95,8 +95,9 @@ void	print_export(t_envp *lst)
 
 void	update_or_add_envps(t_minish *sh, char *cmd)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	update_envp_array(sh, cmd);
 	sh->envp_count++;
 	update_or_add_envp_node(&(sh->n_export), cmd);
