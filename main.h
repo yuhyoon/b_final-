@@ -56,7 +56,7 @@ void 	set_signal_heredoc(void);
 void 	set_signal_fork_heredoc(void);
 void	update_envp_array(t_minish *sh, char *cmd);
 void	set_signal_cat_grep(void *handler);
-int		process_envp_update(char **cmd, int index, char *original_cmd, int is_name, t_minish *sh);
+int		process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish *sh);
 
 //builtins
 int		init_envp(t_minish *sh, char **envp);

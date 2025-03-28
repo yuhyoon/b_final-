@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_export.c                                   :+:      :+:    :+:   */
+/*   builtin_export_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "builtin.h"
 
 void	bubble_sort_envp(char **envp, int count)
 {
@@ -58,7 +58,7 @@ void	f_sort_and_store_envp(char **envp, t_envp **sorted_envp)
 	free_double_char(sorted_envp_array);
 }
 
-void export_err_msg(char *cmds)
+void	export_err_msg(char *cmds)
 {
 	int i;
 	int size;
@@ -76,7 +76,7 @@ void export_err_msg(char *cmds)
 	ft_putstr_fd("not a valid identifier\n", STDERR_FILENO);
 }
 
-void print_export(t_envp *lst)
+void	print_export(t_envp *lst)
 {
 	while (lst)
 	{
@@ -92,7 +92,6 @@ void print_export(t_envp *lst)
 		lst = lst->next;
 	}
 }
-
 
 void	update_or_add_envps(t_minish *sh, char *cmd)
 {

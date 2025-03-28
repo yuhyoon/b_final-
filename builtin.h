@@ -46,8 +46,9 @@ void			print_export(t_envp *lst);
 void			update_or_add_envps(t_minish *sh, char *cmd);
 
 int				is_valid_name(char *name);
-int				is_valid_value2(char **cmd, size_t *index_stack, char *original_cmd, int is_name, t_minish *sh);
-int				process_envp_update(char **cmd, int index, char *original_cmd, int is_name, t_minish *sh);
+size_t			find_cmd_in_original(char *original_cmd, char *cmd, size_t index_stack);
+int				handle_name_case(char **cmd, char *original_cmd, int tmp_i, t_minish *sh);
+int				process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish *sh);
 void			export_update_or_add(char **cmds, char *original_cmd, t_minish *sh);
 int				f_export(t_minish *sh);
 
