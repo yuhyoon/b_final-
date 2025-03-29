@@ -231,8 +231,8 @@ long long		check_input_range(char *arvs);
 
 void			exit_err_msg(char *copy_str, int code);
 long long		check_exit_cmd(char *second_cmd);
-void			f_exit_only(int exitcode);
-void			f_exit_with_msg(int size, char *second_cmd);
+void			f_exit_only(int exitcode, t_minish *sh);
+void			f_exit_with_msg(int size, char *second_cmd, t_minish *sh);
 
 void			bubble_sort_envp(char **envp, int count);
 void			f_sort_and_store_envp(char **envp, t_envp **sorted_envp);
@@ -315,13 +315,10 @@ void	execute_cmd(t_child_process *child, t_minish *sh);
 //builtin
 int		is_builtin(char *cmd_name);
 
-
 void	dengling(void *content, int size_type);
 void	free_minish(t_minish *minish);
 void	free_str_array(char **arr);
-void	free_envps(t_envp **node);
-void	free_init_envps(t_minish *sh);
-
+void	free_all_envps(t_minish *sh);
 
 //parse step 0
 char	*check_blank(char *mask);

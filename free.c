@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:22:57 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 09:55:52 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/29 11:12:56 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	free_envp_list(t_envp **head)
 	*head = NULL;
 }
 
-void	free_init_envps(t_minish *sh)
+void	free_all_envps(t_minish *sh)
 {
 	free_envp_list(&(sh->n_envs));
 	free_envp_list(&(sh->n_export));

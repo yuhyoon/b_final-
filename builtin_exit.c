@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:05:44 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:22:09 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/29 11:05:10 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ long long	check_exit_cmd(char *second_cmd)
 	return (code);
 }
 
-void	f_exit_only(int exitcode)
+void	f_exit_only(int exitcode, t_minish *sh)
 {
 	ft_putstr_fd("exit\n", STDERR_FILENO);
+	free_all_envps(sh);
 	exit(exitcode);
 }
 
-void	f_exit_with_msg(int size, char *second_cmd)
+void	f_exit_with_msg(int size, char *second_cmd, t_minish *sh)
 {
 	int	code;
 
@@ -64,7 +65,7 @@ void	f_exit_with_msg(int size, char *second_cmd)
 		if (code == -1)
 			exit_err_msg(second_cmd, STDERR_FILENO);
 		else
-			f_exit_only(code);
+			f_exit_only(code, sh);
 	}
 	else if (size > 2)
 	{
@@ -83,8 +84,8 @@ int	f_exit(t_minish *sh, t_ready *rdy)
 	cmds = ((t_ready *)sh->ready->content)->cmd;
 	size = f_count_char(cmds);
 	if (size == 1)
-		f_exit_only(*f_exitcode());
+		f_exit_only(*f_exitcode(), sh);
 	else if (size > 1)
-		f_exit_with_msg(size, cmds[1]);
+		f_exit_with_msg(size, cmds[1], sh);
 	return (0);
 }

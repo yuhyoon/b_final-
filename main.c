@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:21:22 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 09:42:36 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/29 11:01:45 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	main(int ac, char **av, char **envp)
 				execute(&sh);
 		}
 	}
-	free_init_envps(&sh);
+	free_all_envps(&sh);
 	rl_clear_history();
 	return (0);
 }

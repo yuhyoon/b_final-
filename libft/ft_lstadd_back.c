@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:54:52 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/29 10:44:13 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/03/29 10:50:05 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last;
+	t_list	*tmp;
 
-	if (!*lst)
-		*lst = new;
-	else
+	tmp = *lst;
+	if (tmp == NULL)
 	{
-		last = ft_lstlast(*lst);
-		last->next = new;
+		*lst = new;
+		return ;
 	}
+	if (new == NULL)
+		return ;
+	while (tmp)
+	{
+		if ((tmp)->next == NULL)
+			break ;
+		tmp = (tmp)->next;
+	}
+	tmp->next = new;
 }
