@@ -28,7 +28,7 @@ char	*valid_env(char *tmp, t_minish *sh)
 {
 	char	*env;
 
-	env = f_getenv(sh->envp, tmp);
+	env = f_env(sh->envp, tmp);
 	if (env == NULL)
 	{
 		env = malloc(sizeof(char));
