@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:01:31 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:22:24 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/29 10:44:51 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_envp	*create_new_node(char *key, char *value)
 	if (value)
 		new_node->value = ft_strdup(value);
 	else
-		new_node->value = NULL;
+		new_node->value = ft_strdup();
 	new_node->count = 1;
 	new_node->next = NULL;
 	return (new_node);

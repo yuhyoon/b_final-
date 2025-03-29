@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:22:22 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/03/29 10:17:51 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	update_t_envp(t_envp *node, char *key, char *value)
 {
 	while (node != NULL)
 	{
-		if (strcmp(node->key, key) == 0)
+		if (ft_strncmp(node->key, key, ft_strlen(node->key) + 1) == 0)
 		{
 			free(node->value);
 			node->value = ft_strdup(value);
