@@ -16,7 +16,7 @@
 # include <errno.h>
 # include "libft/libft.h"
 
-typedef struct s_minish
+typedef struct	s_minish
 {
 	char			*src;
 	char			*mask;
@@ -33,15 +33,15 @@ typedef struct s_minish
 	int				save_in;
 	int				save_out;
 	int				exitcode;
-}t_minish;
+}				t_minish;
 
-typedef struct s_struct
+typedef struct	s_struct
 {
 	void			*ptr;
 	struct s_struct	*next;
-} t_struct;
+}				t_struct;
 
-typedef enum s_token
+typedef enum	s_token
 {
 	NONE,
 	TEXT,
@@ -49,25 +49,25 @@ typedef enum s_token
 	OUT_RD,
 	DOLLAR,
 	PIPE
-}t_token;
+}				t_token;
 
-typedef struct s_redrct
+typedef struct	s_redrct
 {
 	char	*obj;
 	int		fd;
 	int		parts;
 	int		access;
 	char	type;
-}t_redrct;
+}				t_redrct;
 
-typedef struct s_char_state
+typedef struct	s_char_state
 {
 	int		quote;
 	int		quote_seq;
 	char	*current;
-}t_char_state;
+}				t_char_state;
 
-typedef struct s_ready
+typedef struct	s_ready
 {
 	t_list		*text;
 	t_list		*rdrct;
@@ -80,7 +80,7 @@ typedef struct s_ready
 	int			output;
 }t_ready;
 
-typedef enum s_child_state
+typedef enum	s_child_state
 {
 	STATE_CHECK_RDRCT = 1,
 	STATE_EXEC_BUILTIN,
@@ -88,7 +88,7 @@ typedef enum s_child_state
 	STATE_CHECK_PIPE,
 	STATE_EXEC_CMD,
 	STATE_COMPLETE
-}t_child_state;
+}				t_child_state;
 
 typedef struct s_child_process
 {
@@ -101,19 +101,24 @@ typedef struct s_child_process
 	int				output_fd;
 	int				bulitin_code;
 }t_child_process;
-
-typedef struct s_stack
+typedef struct	s_stack
 {
 	int				size;
 	struct s_list	*top;
-}t_stack;
+}				t_stack;
 
-typedef struct s_ready	t_ready;
+typedef struct s_envp
+{
+	char			*key;
+	char			*value;
+	int				count;
+	struct s_envp	*next;
+}				t_envp;
 
 //a_static.h
-int		*f_exitcode(void);
-void	*ft_malloc(size_t size);
-void	ft_free_all(void);
+int				*f_exitcode(void);
+void			*ft_malloc(size_t size);
+void			ft_free_all(void);
 
 pid_t			create_process(t_ready *rdy, t_minish *sh);
 void			parent_proccess(t_minish *sh, t_ready *rdy, pid_t pid, int *pp);
@@ -130,7 +135,6 @@ void			set_signal_heredoc(void);
 void			set_signal_fork_heredoc(void);
 void			update_envp_array(t_minish *sh, char *cmd);
 void			set_signal_cat_grep(void *handler);
-// int				process_envp_update(char **cmd, int index, char *original_cmd, int is_name, t_minish *sh);
 int				process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish *sh);
 
 //builtins
@@ -151,62 +155,49 @@ int				f_update_pwds(t_minish *sh, char *current_pwd);
 void			update_or_add_envps(t_minish *sh, char *cmd);
 int				*f_exitcode(void);
 
-
 // # include "parse.h"
 // # include "parse_utils.h"
 
-int		ft_strlen_delim(char *s, char delim);
-void	init_char_state(t_char_state *state, char *s);
-int		is_whitespace(char c);
-int		is_quote(char c);
-int		ft_ismeta(char *input);
-char	*syntax_result2(t_minish *sh, int result, char *mask);
+int				ft_strlen_delim(char *s, char delim);
+void			init_char_state(t_char_state *state, char *s);
+int				is_whitespace(char c);
+int				is_quote(char c);
+int				ft_ismeta(char *input);
+char			*syntax_result2(t_minish *sh, int result, char *mask);
 
 //analysis.h
 //syntax
-int			syntax_analysis(const char *m, int *len);
-int			valid_meta(int token, char *mask);
+int				syntax_analysis(const char *m, int *len);
+int				valid_meta(int token, char *mask);
 
-//quote
-int			valid_quote(char *s, int quote);
-int			store_quote_seq(t_char_state *char_state, int len);
-int			putchar_quote_state_zero(char *current, int fd);
-int			read_store_fd(int fd, int quote_fd);
-int			set_char_state(char *s, t_char_state *char_state);
+//quote	
+int				valid_quote(char *s, int quote);
+int				store_quote_seq(t_char_state *char_state, int len);
+int				putchar_quote_state_zero(char *current, int fd);
+int				read_store_fd(int fd, int quote_fd);
+int				set_char_state(char *s, t_char_state *char_state);
 
-//redirect
-t_redrct	*init_rdrct(void);
-int			create_rdrct(char *src, char *mask, t_list **head, int *sig_c);
+//redirect	
+t_redrct		*init_rdrct(void);
+int				create_rdrct(char *src, char *mask, t_list **head, int *sig_c);
 
-//dollar
-void		create_text_list(t_ready *rdy, char *src, char *mask, t_minish *sh);
-int			get_variable(char *mask, char *src, t_list **head, t_minish *sh);
-int			get_plain_text(char *s1, char *s2, char *src, t_list **head);
-char		*valid_env(char *tmp, t_minish *sh);
-int			count_text(char *mask);
+//dollar	
+void			create_text_list(t_ready *rdy, char *src, char *mask, t_minish *sh);
+int				get_variable(char *mask, char *src, t_list **head, t_minish *sh);
+int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
+char			*valid_env(char *tmp, t_minish *sh);
+int				count_text(char *mask);
 
-//heredoc
-void		handle_heredoc_child(int write_fd, char *delimeter);
-void		handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
-int write_fd, int *sig_c);
-void		create_heredoc_pipe(int *read_fd, int *write_fd);
-void		f_heredoc(t_redrct *rdrct, int *sig_c);
+//heredoc	
+void			handle_heredoc_child(int write_fd, char *delimeter);
+void			handle_heredoc_parent(t_redrct *rdrct, int read_fd, int write_fd, int *sig_c);
+void			create_heredoc_pipe(int *read_fd, int *write_fd);
+void			f_heredoc(t_redrct *rdrct, int *sig_c);
 
 //heredoc utils
-void		restore_terminal(void);
-void		close_fd(int fd);
+void			restore_terminal(void);
+void			close_fd(int fd);
 
-
-
-typedef struct s_minish t_minish;
-typedef struct s_ready t_ready; 
-typedef struct s_envp
-{
-	char			*key;
-	char			*value;
-	int				count;
-	struct s_envp	*next;
-}				t_envp;
 
 int				update_envps(t_minish *sh, char *newpwd, char *oldpwd);
 int				f_update_pwds(t_minish *sh, char *current_pwd);
@@ -227,12 +218,14 @@ void			process_echo(char **cmds, int size);
 unsigned int	f_echo(t_minish *sh, t_ready *rdy);
 
 long long		ft_atol(char *str);
-long long		check_input_range(char *arvs);
+long long		ft_atol_length(char *str);
+int				check_input_length(char *arvs);
 
-void			exit_err_msg(char *copy_str, int code);
-long long		check_exit_cmd(char *second_cmd);
 void			f_exit_only(int exitcode, t_minish *sh);
-void			f_exit_with_msg(int size, char *second_cmd, t_minish *sh);
+void			f_exit_args(int size, char *second_cmd, t_minish *sh);
+int				check_number_or_not(char *second_cmd);
+void			exit_err_msg(char *copy_str, int code, t_minish *sh);
+
 
 void			bubble_sort_envp(char **envp, int count);
 void			f_sort_and_store_envp(char **envp, t_envp **sorted_envp);
@@ -271,90 +264,88 @@ char			*f_getenv(char **custom_envp, char *name);
 void			update_or_add_envp_node(t_envp **head, char *set);
 int				update_envp_node(t_envp **head, char *key, char *value);
 
-int			child_process(t_ready *rdy, int *pp, t_minish *sh);
-void		*valid_redirect(t_child_process *child, t_ready *rdy, t_minish *sh);
-void		init_child_process(t_child_process *child, int *pp, t_ready *rdy, t_minish *sh);
-int			execute_bulitin(t_child_process *child, t_minish *sh, t_ready *rdy);
+int				child_process(t_ready *rdy, int *pp, t_minish *sh);
+void			*valid_redirect(t_child_process *child, t_ready *rdy, t_minish *sh);
+void			init_child_process(t_child_process *child, int *pp, t_ready *rdy, t_minish *sh);
+int				execute_bulitin(t_child_process *child, t_minish *sh, t_ready *rdy);
 
-void	err_such(int exit, char *obj);
-void	err_permission(int exit, char *obj);
-void	err_exec(int exit, char *cmd_name);
-void	err_syntax(int syntax_result);
+void			err_such(int exit, char *obj);
+void			err_permission(int exit, char *obj);
+void			err_exec(int exit, char *cmd_name);
+void			err_syntax(int syntax_result);
 
 //execute
-int		execute(t_minish *sh);
-void	wait_childs(t_minish *sh);
-int		execute_single_builtin(int bulitin_code, t_minish *sh);
-int		execute_single_is_builtin(t_list *lst, t_minish *sh);
+int				execute(t_minish *sh);
+void			wait_childs(t_minish *sh);
+int				execute_single_builtin(int bulitin_code, t_minish *sh);
+int				execute_single_is_builtin(t_list *lst, t_minish *sh);
 
 //utils
-char	**create_str_2(t_list **head);
-void	free_splited(char **abs);
+char			**create_str_2(t_list **head);
+void			free_splited(char **abs);
 
-//redirect
-int		find_rdrct(t_ready *rdy);
-int		prmssn_rdrct(t_redrct *rdrct);
-int		redirect(t_ready *rdy);
-void	set_io(t_ready *rdy, t_stack *in, t_stack *out);
-void	sort_io(t_stack *in, t_stack *out, t_ready *rdy);
-void	redirect_input_b(t_ready *rdy, int *io);
-void	redirect_output_b(t_ready *rdy, int *io);
+//redire		ct
+int				find_rdrct(t_ready *rdy);
+int				prmssn_rdrct(t_redrct *rdrct);
+int				redirect(t_ready *rdy);
+void			set_io(t_ready *rdy, t_stack *in, t_stack *out);
+void			sort_io(t_stack *in, t_stack *out, t_ready *rdy);
+void			redirect_input_b(t_ready *rdy, int *io);
+void			redirect_output_b(t_ready *rdy, int *io);
 
-//pipe
-void	set_pipe(t_child_process *child, t_minish *sh);
-void	redirect_input(t_child_process *child, t_ready *rdy);
-void	redirect_output(t_child_process *child, t_ready *rdy);
-void	close_pp(t_child_process *child, t_minish *sh);
+//pipe		
+void			set_pipe(t_child_process *child, t_minish *sh);
+void			redirect_input(t_child_process *child, t_ready *rdy);
+void			redirect_output(t_child_process *child, t_ready *rdy);
+void			close_pp(t_child_process *child, t_minish *sh);
 
-//cmd
-char	*get_exepath(t_ready *rdy, t_minish *sh);
-char	*find_exepath(char *name, t_minish *sh);
-void	*access_exepath(t_child_process *child, t_ready *rdy);
-void	execute_cmd(t_child_process *child, t_minish *sh);
+//cmd		
+char			*get_exepath(t_ready *rdy, t_minish *sh);
+char			*find_exepath(char *name, t_minish *sh);
+void			*access_exepath(t_child_process *child, t_ready *rdy);
+void			execute_cmd(t_child_process *child, t_minish *sh);
 
 //builtin
-int		is_builtin(char *cmd_name);
+int				is_builtin(char *cmd_name);
 
-void	dengling(void *content, int size_type);
-void	free_minish(t_minish *minish);
-void	free_str_array(char **arr);
-void	free_all_envps(t_minish *sh);
+void			dengling(void *content, int size_type);
+void			free_minish(t_minish *minish);
+void			free_str_array(char **arr);
+void			free_all_envps(t_minish *sh);
 
-//parse step 0
-char	*check_blank(char *mask);
+//parse 		step 0
+char			*check_blank(char *mask);
 
-//parse step 1
-char	*generate_mask(t_minish *sh);
-int		write_replace_spaces(char *s, int replace_fd);
-int		handle_putchar(t_char_state *char_state, int fd);
-int		set_char_state(char *s, t_char_state *char_state);
-char	*read_maskfd(int mask_fd, int *len);
+//parse 		step 1
+char			*generate_mask(t_minish *sh);
+int				write_replace_spaces(char *s, int replace_fd);
+int				handle_putchar(t_char_state *char_state, int fd);
+int				set_char_state(char *s, t_char_state *char_state);
+char			*read_maskfd(int mask_fd, int *len);
 
-//parse step 2
-void	*parsing(t_minish *sh, int len);
-int		handle_pipe(t_minish *sh, t_ready *current_rdy, \
-t_list		**rdrct, int save);
-t_list		*init_parsing_structure(t_list **rdy_head);
-void	*create_rdy(void);
+//parse 		step 2
+void			*parsing(t_minish *sh, int len);
+int				handle_pipe(t_minish *sh, t_ready *current_rdy, t_list	**rdrct, int save);
+t_list			*init_parsing_structure(t_list **rdy_head);
+void			*create_rdy(void);
 
 
-void	set_signal_fork(void);
-void	before_readline(int signal);
-void	set_signal(void *handler);
-void	set_signal_cat_grep(void *handler);
-void	set_signal_heredoc(void);
-void	set_signal_fork_heredoc(void);
+void			set_signal_fork(void);
+void			before_readline(int signal);
+void			set_signal(void *handler);
+void			set_signal_cat_grep(void *handler);
+void			set_signal_heredoc(void);
+void			set_signal_fork_heredoc(void);
 
-void	init_stack(t_stack *stack, void *top, int size);
-int		is_emthy(t_stack *stack);
-void	push(t_stack *stack, void *data);
-int		pop(t_stack *stack);
-void	*pop2(t_stack *stack);
+void			init_stack(t_stack *stack, void *top, int size);
+int				is_emthy(t_stack *stack);
+void			push(t_stack *stack, void *data);
+int				pop(t_stack *stack);
+void			*pop2(t_stack *stack);
 
-void	del_text(void *txt);
-void	del_redrct(void *rd);
-void	del_ready(void *ready);
-void	del_stack(void *st);
-
+void			del_text(void *txt);
+void			del_redrct(void *rd);
+void			del_ready(void *ready);
+void			del_stack(void *st);
 
 #endif
