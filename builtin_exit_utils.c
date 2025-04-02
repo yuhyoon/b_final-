@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:59:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/01 14:35:11 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/02 15:29:45 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ long long	ft_atol_length(char *str)
 	}
 	while ('0' <= *str && *str <= '9')
 	{
-		if (res > (9223372036854775808 - (*str - '0')) / 10)
+		if (res > (LLONG_MAX - (*str - '0')) / 10)
 				return (-1);
 		res = res * 10 + *str - '0';
 		str++;
