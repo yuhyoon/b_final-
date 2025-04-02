@@ -78,7 +78,7 @@ fclean:
 
 VALGRIND_LOG = valgrind_log.txt
 
-run: 			$(NAME)
+run: 			$(NAME) clean
 				valgrind --leak-check=full \
 				--show-leak-kinds=all \
 				--suppressions=suppression_readline.supp \
