@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analysis_dollar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.gyeongsan>     +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:42:56 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/26 13:38:26 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/03 10:44:09 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*valid_env(char *tmp, t_minish *sh)
 {
 	char	*env;
 
-	env = f_env(sh->envp, tmp);
+	env = f_getenv(sh->envp, tmp);
 	if (env == NULL)
 	{
 		env = malloc(sizeof(char));
