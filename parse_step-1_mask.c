@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_step-1_mask.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:18:32 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/27 17:16:21 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/03 03:33:52 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ char	*generate_mask(t_minish *sh)
 	mask_fd = open("mask_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (mask_fd == -1 || write_replace_spaces(sh->src, mask_fd) < 0)
 	{	
-		sh->exitcode = 2;
 		err_syntax(2);
 		return (NULL);
 	}

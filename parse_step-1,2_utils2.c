@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_step-1_utils2.c                              :+:      :+:    :+:   */
+/*   parse_step-1,2_utils2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:57:28 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 08:57:29 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/03 03:33:55 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*syntax_result2(t_minish *sh, int result, char *mask)
 	{
 		free(mask);
 		mask = NULL;
-		sh->exitcode = result;
 		err_syntax(result);
 		return (NULL);
 	}

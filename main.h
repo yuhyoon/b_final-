@@ -33,7 +33,6 @@ typedef struct	s_minish
 	int				built_code;
 	int				save_in;
 	int				save_out;
-	int				exitcode;
 }				t_minish;
 
 typedef struct	s_struct
