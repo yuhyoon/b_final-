@@ -197,7 +197,7 @@ int				update_envps(t_minish *sh, char *newpwd, char *oldpwd);
 int				f_update_pwds(t_minish *sh, char *current_pwd);
 void			f_putstr_fd_error_msg(char *builtin, char *msg, char *location, int fd);
 int				f_check_params(char *param1, int length);
-int				f_cd_process_params(t_minish *sh, t_list *commands);
+int				f_cd_process_params(t_minish *sh, char **commands);
 
 int				f_cd_root(void);
 int				f_cd_goto(char *location);
@@ -229,17 +229,19 @@ void			update_or_add_envps(t_minish *sh, char *cmd);
 
 
 //before_norm
-// void	export_update_or_add(char **cmds, char *original_cmd, t_minish *sh);
-// int	process_envp_update(char **cmd, int index, char *original_cmd, int is_name, t_minish *sh);
-// int	is_valid_value2(char **cmd, size_t *index_stack, char *original_cmd, int is_name, t_minish *sh);
-// int	is_valid_name(char *name);
+void	export_update_or_add(char **cmds, char *original_cmd, t_minish *sh);
+int	process_envp_update(char **cmd, int index, char *original_cmd, int is_name, t_minish *sh);
+int	is_valid_value2(char **cmd, size_t *index_stack, char *original_cmd, int is_name, t_minish *sh);
+int	is_valid_name(char *name);
 
-int				is_valid_name(char *name);
-size_t			find_cmd_in_original(char *original_cmd, char *cmd, size_t index_stack);
-int				handle_name_case(char **cmd, char *original_cmd, int tmp_i, t_minish *sh);
-int				process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish *sh);
-void			export_update_or_add(char **cmds, char *original_cmd, t_minish *sh);
-int				f_export(t_minish *sh);
+// int				is_valid_name(char *name);
+// size_t			find_cmd_in_original(char *original_cmd, char *cmd, size_t index_stack);
+// int				handle_name_case(char **cmd, char *original_cmd, int tmp_i, t_minish *sh);
+// int				process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish *sh);
+// void			export_update_or_add(char **cmds, char *original_cmd, t_minish *sh);
+// int				f_export(t_minish *sh);
+int	f_export(t_minish *sh, t_ready *rdy);
+
 
 int				f_pwd(t_ready *rdy);
 

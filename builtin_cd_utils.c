@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/03 03:40:37 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/03 10:50:55 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,18 +103,17 @@ int	f_check_params(char *param1, int length)
 		return (4);
 }
 
-int	f_cd_process_params(t_minish *sh, t_list *commands)
+int	f_cd_process_params(t_minish *sh, char **cmds)
 {
 	int	size;
 	int	res;
 
-	size = ft_lstsize(commands);
+	size = f_count_char(cmds);
 	if (size == 1)
 		return (f_cd_home(sh));
 	else if (size == 2)
 	{
-		res = f_check_params((char *)commands->next->content, \
-			((int)ft_strlen((char *)commands->next->content)));
+		res = f_check_params(cmds[1], ft_strlen(cmds[1]));
 		if (res == 1)
 			return (f_cd_go_back(sh));
 		else if (res == 2)
@@ -122,7 +121,7 @@ int	f_cd_process_params(t_minish *sh, t_list *commands)
 		else if (res == 3)
 			return (f_cd_root());
 		else if (res == 4)
-			return (f_cd_goto((char *)commands->next->content));
+			return (f_cd_goto(cmds[1]));
 	}
 	else
 	{
