@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_step-2_handle_tokens.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyeom <hyeyeom@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:15:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/28 18:31:10 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/03 05:53:25 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	*parsing(t_minish *sh, int len)
 	i = 0;
 	save = i;
 	lst = init_parsing_structure(&sh->ready);
+	sig_c = 0;
 	while (i < len)
 	{
 		if (sig_c == 1)
