@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/03 03:40:26 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/03 04:50:17 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ int	f_cd(t_minish *sh, t_ready *rdy)
 	current_pwd = getcwd(NULL, 0);
 	if (!current_pwd)
 		return (1);
-	// commands = (((t_ready *)(sh->ready->content))->text);
-	commands = rdy->cmd;
+	commands = (((t_ready *)(sh->ready->content))->text);
+	// commands = rdy->cmd;
 	res = f_cd_process_params(sh, commands);
 	if (res == 0)
 		f_update_pwds(sh, current_pwd);

@@ -58,7 +58,7 @@ int	execute_single_builtin(int bulitin_code, t_minish *sh)
 	if (valid_redirect_builtin(rdy, sh) == NULL)
 		return (-1);
 	if (bulitin_code == 1)
-		res = f_cd(sh);
+		res = f_cd(sh, rdy);
 	else if (bulitin_code == 2)
 		res = f_echo(sh, rdy);
 	else if (bulitin_code == 3)

@@ -18,7 +18,7 @@ int	execute_bulitin(t_child_process *child, t_minish *sh, t_ready *rdy)
 
 	res = 0;
 	if (child->bulitin_code == 1)
-		res = f_cd(sh);
+		res = f_cd(sh, rdy);
 	else if (child->bulitin_code == 2)
 		res = f_echo(sh, rdy);
 	else if (child->bulitin_code == 3)
