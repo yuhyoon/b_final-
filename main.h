@@ -139,7 +139,7 @@ int				process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish
 
 //builtins
 int				init_envp(t_minish *sh, char **envp);
-int				f_cd(t_minish *sh);
+int				f_cd(t_minish *sh, t_ready *rdy);
 unsigned int	f_echo(t_minish *sh, t_ready *rdy);
 
 int				f_pwd(t_ready *rdy);
@@ -150,10 +150,10 @@ int				f_unset(t_minish *sh);
 
 int				f_cd_home(t_minish *sh);
 int				f_cd_go_back(t_minish *sh);
+int				cd_err_msg(char *location, int exitstatus, int situation);
 int				update_envps(t_minish *sh, char *newpwd, char *oldpwd);
 int				f_update_pwds(t_minish *sh, char *current_pwd);
 void			update_or_add_envps(t_minish *sh, char *cmd);
-int				*f_exitcode(void);
 
 // # include "parse.h"
 // # include "parse_utils.h"
