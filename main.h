@@ -140,7 +140,7 @@ void			set_signal_cat_grep(void *handler);
 int				init_envp(t_minish *sh, char **envp);
 
 int				f_exit(t_minish *sh, t_ready *rdy);
-int				f_env(t_minish *sh);
+int				f_env(t_minish *sh, t_ready *rdy);
 
 int				f_cd_home(t_minish *sh);
 int				f_cd_go_back(t_minish *sh);
@@ -246,7 +246,7 @@ int	f_export(t_minish *sh, t_ready *rdy);
 int				f_pwd(t_ready *rdy);
 
 void			delete_double_char(t_minish *sh, char *cmd);
-int				f_unset(t_minish *sh);
+int				f_unset(t_minish *sh, t_ready *rdy);
 
 void			free_node_t_envp(t_envp **envp);
 int				f_count_char(char **envp);

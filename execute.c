@@ -64,11 +64,11 @@ int	execute_single_builtin(int bulitin_code, t_minish *sh)
 	else if (bulitin_code == 3)
 		res = f_pwd(rdy);
 	else if (bulitin_code == 4)
-		res = f_export(sh);
+		res = f_export(sh, rdy);
 	else if (bulitin_code == 5)
-		res = f_env(sh);
+		res = f_env(sh, rdy);
 	else if (bulitin_code == 6)
-		res = f_unset(sh);
+		res = f_unset(sh, rdy);
 	else if (bulitin_code == 7)
 		res = f_exit(sh, rdy);
 	close_redirec_b(sh);

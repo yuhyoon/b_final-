@@ -24,11 +24,11 @@ int	execute_bulitin(t_child_process *child, t_minish *sh, t_ready *rdy)
 	else if (child->bulitin_code == 3)
 		res = f_pwd(rdy);
 	else if (child->bulitin_code == 4)
-		res = f_export(sh);
+		res = f_export(sh, rdy);
 	else if (child->bulitin_code == 5)
-		res = f_env(sh);
+		res = f_env(sh, rdy);
 	else if (child->bulitin_code == 6)
-		res = f_unset(sh);
+		res = f_unset(sh, rdy);
 	else if (child->bulitin_code == 7)
 		res = f_exit(sh, rdy);
 	child->state = STATE_COMPLETE;

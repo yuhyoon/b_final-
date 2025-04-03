@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:59:30 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:22:17 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/03 11:04:43 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	f_pwd(t_ready *rdy)
 {
+	(void)rdy;
 	char	*new_pwd;
 
 	new_pwd = getcwd(NULL, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bulitin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:27:35 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:43:30 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/03 11:06:32 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	print_env(t_envp *list)
 	}
 }
 
-int	f_env(t_minish *sh)
+int	f_env(t_minish *sh, t_ready *rdy)
 {
 	int		size;
 	char	**cmds;
 	char	*original_cmd;
 
 	original_cmd = sh->src;
-	cmds = ((t_ready *)sh->ready->content)->cmd;
+	cmds = rdy->cmd;
 	size = f_count_char(cmds);
 	if (size == 1)
 		print_env(sh->n_envs);

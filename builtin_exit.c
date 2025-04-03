@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:05:44 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/01 14:35:56 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/03 05:52:27 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	exit_err_msg(char *copy_str, int code, t_minish *sh)
 	else
 		*f_exitcode() = code;
 	free_all_envps(sh);
+	free_minish(sh);
 	exit(*f_exitcode());
 }
 
@@ -85,6 +86,7 @@ void	f_exit_only(int exitcode, t_minish *sh)
 {
 	ft_putstr_fd("exit\n", STDERR_FILENO);
 	free_all_envps(sh);
+	free_minish(sh);
 	exit(exitcode);
 }
 
