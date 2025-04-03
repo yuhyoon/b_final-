@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:21:22 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/29 11:01:45 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:54:32 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ pid_t	create_process(t_ready *rdy, t_minish *sh)
 	{
 		set_signal_cat_grep(after_cat_grep_c);
 		result = child_process(rdy, pp, sh);
+		free_all_envps(sh);
+		free_minish(sh);
 		exit(result);
 	}
 	else
