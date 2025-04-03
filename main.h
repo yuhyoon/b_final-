@@ -205,9 +205,9 @@ int				f_cd_home(t_minish *sh);
 int				f_cd_go_back(t_minish *sh);
 int				f_cd(t_minish *sh, t_ready *rdy);
 
-void			f_print_echo(char **param_list, int option_off);
+void			f_print_echo(char **param_list, int *option_off);
 int				f_check_n_option(char *is_option);
-int				check_n_option(char **cmds, int size);
+int				check_n_option(char **cmds, int size, int *flag);
 void			process_echo(char **cmds, int size);
 unsigned int	f_echo(t_minish *sh, t_ready *rdy);
 

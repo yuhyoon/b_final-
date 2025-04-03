@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyeom <hyeyeom@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 17:59:25 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/03 13:03:04 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	f_print_echo(char **param_list, int option_off)
+void	f_print_echo(char **param_list, int *option_off)
 {
-	printf("-------- %s\n", *param_list);
 	while (*param_list)
 	{
 		write(STDOUT_FILENO, *param_list, ft_strlen(*param_list));
@@ -22,7 +21,7 @@ void	f_print_echo(char **param_list, int option_off)
 		if (*param_list)
 			write(STDOUT_FILENO, " ", 1);
 	}
-	if (!option_off)
+	if (!*option_off)
 		write(STDOUT_FILENO, "\n", 1);
 }
 
@@ -33,8 +32,8 @@ int	f_check_n_option(char *is_option)
 
 	i = 1;
 	len_option = ft_strlen(is_option);
-	if (len_option == 1 && is_option[0] != '=')
-		return (0);
+	if (!len_option)
+		return (1);
 	while (is_option[0] == '-' && is_option[i] == 'n')
 		i++;
 	if (is_option[i] != '\0')
@@ -42,22 +41,20 @@ int	f_check_n_option(char *is_option)
 	return (1);
 }
 
-int	check_n_option(char **cmds, int size)
+int	check_n_option(char **cmds, int size, int *flag)
 {
 	int		i;
-	int		flag;
 
-	flag = 0;
 	i = 1;
 	while (i < size)
 	{
-		printf("----- %s\n", cmds[i]);
 		if (f_check_n_option(cmds[i]) == 1)
-			flag = 1;
+			*flag = 1;
 		else
 			break ;
 		i++;
 	}
+	printf("djeltj ? %d\n", i);
 	return (i);
 }
 
@@ -67,10 +64,8 @@ void	process_echo(char **cmds, int size)
 	int		flag;
 
 	flag = 0;
-	start_idx = check_n_option(cmds, size);
-	if (start_idx != size)
-		flag = 1;
-	f_print_echo(&(cmds[start_idx]), flag);
+	start_idx = check_n_option(cmds, size, &flag);
+	f_print_echo(&(cmds[start_idx]), &flag);
 }
 
 unsigned int	f_echo(t_minish *sh, t_ready *rdy)
