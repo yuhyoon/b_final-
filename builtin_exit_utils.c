@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:59:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/02 15:29:45 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:18:22 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ long long	ft_atol_length(char *str)
 		res = res * 10 + *str - '0';
 		str++;
 	}
-	printf("sign * res %lld\n", sign * res);
 	return (1);
 }
 

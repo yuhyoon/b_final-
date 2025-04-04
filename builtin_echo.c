@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/03 13:03:04 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:18:09 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	check_n_option(char **cmds, int size, int *flag)
 			break ;
 		i++;
 	}
-	printf("djeltj ? %d\n", i);
 	return (i);
 }
 

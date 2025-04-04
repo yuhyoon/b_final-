@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:05:44 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/03 05:52:27 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:18:27 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	f_exit_args(int size, char *second_cmd, t_minish *sh)
 	if (size > 2)
 		exit_err_msg(NULL, -1, sh);
 	res = check_number_or_not(second_cmd);
-	printf("check_number_or_not : %d\n ", res);
 	if (res == -1)
 	{
 		exit_err_msg(second_cmd, -2, sh);
