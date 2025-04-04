@@ -6,17 +6,50 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/04 14:32:46 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 15:00:27 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+static char	*check_name_contains_equal_sign(char *cmd)
+{
+	int		i;
+	int		total;
+	char	*new_cmd;
+
+	i = 0;
+	total = ft_strlen(cmd);
+	while (i < total)
+	{
+		if (cmd[i] == '=')
+			return (NULL);
+		i++;
+	}
+	new_cmd = ft_strjoin(cmd, "=");
+	return (new_cmd);
+}
+
+static void	allocate_new_envp(char **new_envp, char *cmd, int envp_count)
+{
+	char	*new_cmd;
+	
+	new_envp[envp_count] = ft_strdup(cmd);
+	new_cmd = check_name_contains_equal_sign(cmd);
+	if (new_cmd != NULL)
+	{
+		free(new_envp[envp_count]);
+		new_envp[envp_count] = ft_strdup(new_cmd);
+		free(new_cmd);
+	}
+}
 
 void	update_envp_array(t_minish *sh, char *cmd)
 {
 	int		new_count;
 	int		i;
 	char	**new_envp;
+	char	*new_cmd;
 
 	new_count = sh->envp_count + 1;
 	new_envp = (char **)malloc(sizeof(char *) * (new_count + 1));
@@ -32,88 +65,8 @@ void	update_envp_array(t_minish *sh, char *cmd)
 			exit(EXIT_FAILURE);
 		}
 	}
-	new_envp[sh->envp_count] = ft_strdup(cmd);
+	allocate_new_envp(new_envp, cmd, sh->envp_count);
 	new_envp[sh->envp_count + 1] = NULL;
 	free_double_char(sh->envp);
 	sh->envp = new_envp;
-}
-
-void	f_init_env(char **envp, t_envp **n_envps)
-{
-	int		i;
-	t_envp	*tmp;
-
-	tmp = new_node(envp, 0);
-	*n_envps = tmp;
-	i = 0;
-	while (envp[++i])
-	{
-		tmp->next = new_node(envp, i);
-		tmp = tmp->next;
-	}
-	tmp->next = NULL;
-}
-
-t_envp	*new_node(char **envp, int idx)
-{
-	t_envp	*first;
-	char	**split_envp;
-	int		count;
-
-	count = f_count_char(envp);
-	first = (t_envp *)malloc(sizeof(t_envp));
-	if (!first)
-		return (NULL);
-	split_envp = ft_split(envp[idx], '=');
-	first->key = ft_strdup(split_envp[0]);
-	if (split_envp[1] == NULL || split_envp[1][0] == '\0')
-		first->value = ft_strdup("\0");
-	else
-		first->value = ft_strdup(split_envp[1]);
-	first->count = count;
-	first->next = NULL;
-	free_double_char(split_envp);
-	return (first);
-}
-
-void	delete_t_envp(t_envp **head, char *key)
-{
-	t_envp	*current;
-	t_envp	*prev;
-
-	if (!head || !*head)
-		return ;
-	current = *head;
-	prev = NULL;
-	while (current)
-	{
-		if (ft_strncmp(current->key, key, (ft_strlen(current->key) + 1)) == 0)
-		{
-			if (prev == NULL)
-				*head = current->next;
-			else
-				prev->next = current->next;
-			free(current->key);
-			free(current->value);
-			free(current);
-			return ;
-		}
-		prev = current;
-		current = current->next;
-	}
-}
-
-int	update_t_envp(t_envp *node, char *key, char *value)
-{
-	while (node != NULL)
-	{
-		if (ft_strncmp(node->key, key, ft_strlen(node->key) + 1) == 0)
-		{
-			free(node->value);
-			node->value = ft_strdup(value);
-			return (1);
-		}
-		node = node->next;
-	}
-	return (0);
 }

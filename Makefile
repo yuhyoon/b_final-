@@ -47,6 +47,7 @@ SRCS 			= main.c \
 				builtin_utils1.c \
 				builtin_utils2.c \
 				builtin_utils3.c \
+				builtin_utils4.c \
 				bulitin_env.c \
 				builtin_exit.c \
 				builtin_exit_utils.c \
