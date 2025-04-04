@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:21:22 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/03 12:54:32 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 13:44:18 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	read_input(t_minish *sh)
 
 void	parent_proccess(t_minish *sh, t_ready *rdy, pid_t pid, int *pp)
 {
+	set_signal_cat_grep(after_cat_grep);
 	if (sh->child_pids != NULL)
 		sh->child_pids[rdy->num - 1] = pid;
 	if (sh->prev_for_pipe != -1)
@@ -76,7 +77,7 @@ pid_t	create_process(t_ready *rdy, t_minish *sh)
 	pid = fork();
 	if (pid == 0)
 	{
-		set_signal_cat_grep(after_cat_grep_c);
+		set_signal_cat_grep(before_cat_grep);
 		result = child_process(rdy, pp, sh);
 		free_all_envps(sh);
 		free_minish(sh);
@@ -94,7 +95,6 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac > 1)
 		exit(EXIT_FAILURE);
-	set_signal(before_readline);
 	init_minish(&sh, envp);
 	while (ac == 1 && av[0])
 	{

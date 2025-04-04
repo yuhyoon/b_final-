@@ -6,11 +6,17 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:55:43 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 04:41:03 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 13:45:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+void	set_signal_fork(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}
 
 void	sig_handler_heredoc(int signo)
 {

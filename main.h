@@ -125,9 +125,9 @@ void			parent_proccess(t_minish *sh, t_ready *rdy, pid_t pid, int *pp);
 
 // signal
 void			set_signal(void *handler);
-void			set_signal_fork(void);
+void			after_cat_grep(int signal);
 void			before_readline(int signal);
-void			after_cat_grep_c(int signal);
+void			before_cat_grep(int signal);
 
 //signal_heredoc
 void			sig_handler_heredoc(int signo);
