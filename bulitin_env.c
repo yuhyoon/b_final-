@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:27:35 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/03 11:06:32 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:15:29 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@ void	print_env(t_envp *list)
 {
 	while (list)
 	{
-		if (ft_strncmp(list->key, "_", ft_strlen(list->key)) != 0)
-		{
-			write(STDOUT_FILENO, list->key, ft_strlen(list->key));
-			write(STDOUT_FILENO, "=", 1);
-			if (list->value)
-				write(STDOUT_FILENO, list->value, ft_strlen(list->value));
-			write(STDOUT_FILENO, "\n", 1);
-		}
+		write(STDOUT_FILENO, list->key, ft_strlen(list->key));
+		write(STDOUT_FILENO, "=", 1);
+		if (list->value)
+			write(STDOUT_FILENO, list->value, ft_strlen(list->value));
+		write(STDOUT_FILENO, "\n", 1);
 		list = list->next;
 	}
 }
