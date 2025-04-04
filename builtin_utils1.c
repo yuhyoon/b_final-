@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/29 10:17:51 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:32:46 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	delete_t_envp(t_envp **head, char *key)
 	prev = NULL;
 	while (current)
 	{
-		if (ft_strncmp(current->key, key, ft_strlen(current->key)) == 0)
+		if (ft_strncmp(current->key, key, (ft_strlen(current->key) + 1)) == 0)
 		{
 			if (prev == NULL)
 				*head = current->next;
