@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_cd_utils.c                                 :+:      :+:    :+:   */
+/*   builtin_cd_utils1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 13:18:06 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:20:20 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
-int	cd_err_msg(char *location, int exitstatus, int situation)
-{
-	int	res;
-
-	res = 0;
-	if (situation == 1)
-		f_putstr_fd_error_msg("cd", "No such file or directory", location, \
-			STDERR_FILENO);
-	else if (situation == 2)
-		f_putstr_fd_error_msg("cd", "Permission denied", location, \
-			STDERR_FILENO);
-	else if (situation == 3)
-		f_putstr_fd_error_msg("cd", "No such file or directory", location, \
-			STDERR_FILENO);
-	res = exitstatus;
-	*f_exitcode() = exitstatus;
-	return (res);
-}
 
 int	update_envps(t_minish *sh, char *newpwd, char *oldpwd)
 {
