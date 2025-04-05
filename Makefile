@@ -36,7 +36,8 @@ SRCS 			= main.c \
 				parse_step-1,2_utils2.c \
 				init_envp.c \
 				builtin_cd.c \
-				builtin_cd_utils.c \
+				builtin_cd_utils1.c \
+				builtin_cd_utils2.c \
 				builtin_echo.c \
 				builtin_export.c \
 				builtin_export_utils1.c \

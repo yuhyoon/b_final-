@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/03 10:50:55 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:18:06 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	cd_err_msg(char *location, int exitstatus, int situation)
 {
-	int res;
+	int	res;
 
 	res = 0;
 	if (situation == 1)
