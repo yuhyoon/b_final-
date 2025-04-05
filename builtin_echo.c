@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/04 14:18:09 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/05 11:16:50 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	f_check_n_option(char *is_option)
 	len_option = ft_strlen(is_option);
 	if (!len_option)
 		return (1);
+	if (is_option[0] != '-')
+		return (0);
 	while (is_option[0] == '-' && is_option[i] == 'n')
 		i++;
 	if (is_option[i] != '\0')
