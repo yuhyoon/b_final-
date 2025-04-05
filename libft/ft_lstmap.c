@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@42student.gyeongsan.      +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:26:20 by yuhyoon           #+#    #+#             */
-/*   Updated: 2024/03/25 17:46:19 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:24:41 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		free(current);
 		return (0);
-	}	
+	}
 	current_head = current;
 	while (lst != NULL)
 	{
