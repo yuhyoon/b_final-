@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export_utils1.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyeom <hyeyeom@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:59:34 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 18:00:31 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/04 15:03:17 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,18 @@ void	print_export(t_envp *lst)
 {
 	while (lst)
 	{
-		ft_putstr_fd("declare -x ", 2);
-		ft_putstr_fd(lst->key, 2);
-		if (lst->value)
+		if (ft_strncmp(lst->key, "_", (ft_strlen(lst->key) + 1)) != 0)
 		{
-			ft_putstr_fd("=\"", 2);
-			ft_putstr_fd(lst->value, 2);
-			ft_putstr_fd("\"", 2);
+			ft_putstr_fd("declare -x ", STDOUT_FILENO);
+			ft_putstr_fd(lst->key, STDOUT_FILENO);
+			if (lst->value)
+			{
+				ft_putstr_fd("=\"", STDOUT_FILENO);
+				ft_putstr_fd(lst->value, STDOUT_FILENO);
+				ft_putstr_fd("\"", STDOUT_FILENO);
+			}
+			ft_putstr_fd("\n", STDOUT_FILENO);
 		}
-		ft_putstr_fd("\n", 2);
 		lst = lst->next;
 	}
 }
