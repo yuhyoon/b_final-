@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/04 15:00:27 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:21:48 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*check_name_contains_equal_sign(char *cmd)
 static void	allocate_new_envp(char **new_envp, char *cmd, int envp_count)
 {
 	char	*new_cmd;
-	
+
 	new_envp[envp_count] = ft_strdup(cmd);
 	new_cmd = check_name_contains_equal_sign(cmd);
 	if (new_cmd != NULL)
