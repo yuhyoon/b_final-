@@ -243,9 +243,7 @@ int	is_valid_name(char *name);
 int	f_export(t_minish *sh, t_ready *rdy);
 
 
-int				f_pwd(t_ready *rdy);
-
-void			delete_double_char(t_minish *sh, char *cmd);
+int				f_pwd(void);
 int				f_unset(t_minish *sh, t_ready *rdy);
 
 void			free_node_t_envp(t_envp **envp);

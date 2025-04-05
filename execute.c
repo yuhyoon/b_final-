@@ -62,7 +62,7 @@ int	execute_single_builtin(int bulitin_code, t_minish *sh)
 	else if (bulitin_code == 2)
 		res = f_echo(sh, rdy);
 	else if (bulitin_code == 3)
-		res = f_pwd(rdy);
+		res = f_pwd();
 	else if (bulitin_code == 4)
 		res = f_export(sh, rdy);
 	else if (bulitin_code == 5)

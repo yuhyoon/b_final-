@@ -22,7 +22,7 @@ int	execute_bulitin(t_child_process *child, t_minish *sh, t_ready *rdy)
 	else if (child->bulitin_code == 2)
 		res = f_echo(sh, rdy);
 	else if (child->bulitin_code == 3)
-		res = f_pwd(rdy);
+		res = f_pwd();
 	else if (child->bulitin_code == 4)
 		res = f_export(sh, rdy);
 	else if (child->bulitin_code == 5)
