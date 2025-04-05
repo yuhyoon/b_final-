@@ -6,34 +6,37 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 21:10:39 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/03 11:05:48 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:14:41 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	delete_double_char(t_minish *sh, char *cmd)
+static void	after_unset_new_envp(t_envp **head, t_minish *sh)
 {
-	int		len_arr;
+	t_envp	*current;
+	char	*new_name;
 	int		i;
-	char	*name;
-	char	**new_envp;
 
-	len_arr = f_count_char(sh->envp);
-	i = -1;
-	new_envp = (char **)malloc(sizeof(char *) * (len_arr));
-	if (!new_envp)
+	if (!head || !*head)
 		return ;
-	name = ft_strjoin(cmd, "=");
-	while (++i < len_arr)
-	{
-		if (ft_strncmp(sh->envp[i], name, ft_strlen(name)) <= 0)
-			new_envp[i] = ft_strdup(sh->envp[i]);
-	}
-	new_envp[len_arr - 1] = NULL;
+	current = *head;
 	free_double_char(sh->envp);
-	sh->envp = new_envp;
-	free(name);
+	sh->envp = (char **)malloc(sizeof(char *) * (sh->envp_count + 1));
+	i = 0;
+	while (current)
+	{
+		new_name = ft_strjoin(current->key, "=");
+		if (current->value != NULL)
+			sh->envp[i] = ft_strjoin(new_name, current->value);
+		else
+			sh->envp[i] = ft_strdup(new_name);
+		free(new_name);
+		current = current->next;
+		i++;
+	}
+	sh->envp[i] = NULL;
+	sh->envp_count = f_count_char(sh->envp);
 }
 
 int	f_unset(t_minish *sh, t_ready *rdy)
@@ -44,6 +47,7 @@ int	f_unset(t_minish *sh, t_ready *rdy)
 
 	cmds = rdy->cmd;
 	size = f_count_char(cmds);
+	printf("sh->envp_count : %d\n ", sh->envp_count);
 	if (size > 1)
 	{
 		i = 1;
@@ -51,10 +55,9 @@ int	f_unset(t_minish *sh, t_ready *rdy)
 		{
 			delete_t_envp(&(sh->n_export), cmds[i]);
 			delete_t_envp(&(sh->n_envs), cmds[i]);
-			delete_double_char(sh, cmds[i]);
+			after_unset_new_envp(&(sh->n_export), sh);
 			i++;
 		}
 	}
-	sh->envp_count = sh->envp_count - (size - 1);
 	return (0);
 }
