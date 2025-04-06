@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "main.h"
-
+/*
 char	*check_replace(t_minish *sh);
 char	*replace_dollar_to_text(t_minish *sh, int i);
 void	mask_regenerate(t_minish *sh, t_list *lst);
@@ -86,7 +86,7 @@ char	*putchar_replace(t_minish *sh, t_list *lst, int	fd)
 	replace_str = read_maskfd(fd, &len);
 	return (replace_str);
 }
-
+*/
 char	*check_blank(char *mask)
 {
 	int	len;

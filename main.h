@@ -63,7 +63,13 @@ typedef enum s_token
 	PIPE
 }				t_token;
 
-typedef struct s_redrct
+typedef struct s_compare
+{
+	char	*src_span;
+	char	*msk_span;
+}t_compare;
+
+typedef struct	s_redrct
 {
 	char	*obj;
 	int		fd;
@@ -81,6 +87,8 @@ typedef struct s_char_state
 
 typedef struct s_ready
 {
+	char		*subsrc;
+	char		*submsk;
 	t_list		*text;
 	t_list		*rdrct;
 	int			rdrct_num;

@@ -1,4 +1,4 @@
-NAME 			= minishell
+NAME 			= test_minishell
 
 CC 				= cc
 CFLAGS 			= -g #-Wall -Wextra -Werror 

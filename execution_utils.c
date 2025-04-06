@@ -34,6 +34,7 @@ char	**create_str_2(t_list **head)
 	char	**str;
 	t_list	*tmp;
 	int		i;
+	char	*subsrc;
 
 	size = ft_lstsize(*head);
 	str = malloc(sizeof(char *) * (size + 1));
@@ -41,7 +42,8 @@ char	**create_str_2(t_list **head)
 	tmp = *head;
 	while (i < size)
 	{
-		str[i] = ft_strdup((char *)tmp->content);
+		subsrc = ((t_compare *)tmp->content)->src_span;
+		str[i] = ft_strdup(subsrc);
 		i++;
 		tmp = tmp->next;
 	}
