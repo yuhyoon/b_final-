@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 11:16:50 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/06 14:45:32 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	process_echo(char **cmds, int size)
 	f_print_echo(&(cmds[start_idx]), &flag);
 }
 
-unsigned int	f_echo(t_minish *sh, t_ready *rdy)
+unsigned int	f_echo(t_ready *rdy)
 {
 	char	**cmds;
 	int		size;

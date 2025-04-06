@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 07:02:30 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/06 14:45:22 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ void			f_print_echo(char **param_list, int *option_off);
 int				f_check_n_option(char *is_option);
 int				check_n_option(char **cmds, int size, int *flag);
 void			process_echo(char **cmds, int size);
-unsigned int	f_echo(t_minish *sh, t_ready *rdy);
+unsigned int	f_echo(t_ready *rdy);
 long long		ft_atol(char *str);
 long long		ft_atol_length(char *str);
 int				check_input_length(char *arvs);

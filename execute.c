@@ -59,7 +59,7 @@ int	execute_single_builtin(int bulitin_code, t_minish *sh)
 	if (bulitin_code == 1)
 		res = f_cd(sh, rdy);
 	else if (bulitin_code == 2)
-		res = f_echo(sh, rdy);
+		res = f_echo(rdy);
 	else if (bulitin_code == 3)
 		res = f_pwd();
 	else if (bulitin_code == 4)
