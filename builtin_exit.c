@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:05:44 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/04 14:18:27 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/06 14:41:04 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	check_number_or_not(char *second_cmd)
 void	f_exit_args(int size, char *second_cmd, t_minish *sh)
 {
 	unsigned char	check_valid_arg;
-	int				is_valid_arg;
 	int				length_check;
 	int				res;
 

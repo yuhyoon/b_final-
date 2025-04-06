@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 13:21:48 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/06 14:41:50 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	update_envp_array(t_minish *sh, char *cmd)
 	int		new_count;
 	int		i;
 	char	**new_envp;
-	char	*new_cmd;
 
 	new_count = sh->envp_count + 1;
 	new_envp = (char **)malloc(sizeof(char *) * (new_count + 1));

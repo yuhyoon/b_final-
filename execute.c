@@ -16,7 +16,6 @@ void	wait_childs(t_minish *sh)
 {
 	int	i;
 	int	status;
-	int	w;
 
 	i = 0;
 	while (sh->child_pids != NULL && i < sh->cmd_count)

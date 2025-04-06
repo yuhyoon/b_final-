@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:27:35 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 06:58:09 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/06 14:42:05 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ int	f_env(t_minish *sh, t_ready *rdy)
 {
 	int		size;
 	char	**cmds;
-	char	*original_cmd;
 
-	original_cmd = sh->src;
 	cmds = rdy->cmd;
 	size = f_count_char(cmds);
 	if (size == 1)
