@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 13:47:11 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/06 07:02:30 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ int				get_variable(char *mask, char *src, t_list **head, \
 int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
 char			*valid_env(char *tmp, t_minish *sh);
 int				count_text(char *mask);
-void			handle_heredoc_child(int write_fd, char *delimeter);
+void			handle_heredoc_child(int read_fd, int write_fd, char *delimeter);
 void			handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
 				int write_fd, int *sig_c);
 void			create_heredoc_pipe(int *read_fd, int *write_fd);
