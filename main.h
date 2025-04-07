@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 11:27:59 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:14:30 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,6 @@ void			before_cat_grep(int signal);
 void			sig_handler_heredoc(int signo);
 void			set_signal_heredoc(void);
 void			set_signal_fork_heredoc(void);
-void			update_envp_array(t_minish *sh, char *cmd);
 void			set_signal_cat_grep(void *handler);
 int				init_envp(t_minish *sh, char **envp);
 int				f_exit(t_minish *sh, t_ready *rdy);
@@ -249,7 +248,7 @@ int				f_unset(t_minish *sh, t_ready *rdy);
 void			free_node_t_envp(t_envp **envp);
 int				f_count_char(char **envp);
 void			free_double_char(char **double_char);
-void			update_envp_array(t_minish *sh, char *cmd);
+void			after_update_new_envp(t_envp **head, t_minish *sh);
 void			f_init_env(char **envp, t_envp **n_envps);
 t_envp			*new_node(char **envp, int idx);
 void			delete_t_envp(t_envp **head, char *key);

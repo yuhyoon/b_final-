@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:59:34 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 14:41:36 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:14:36 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ void	print_export(t_envp *lst)
 
 void	update_or_add_envps(t_minish *sh, char *cmd)
 {
-	update_envp_array(sh, cmd);
-	sh->envp_count++;
 	update_or_add_envp_node(&(sh->n_export), cmd);
 	update_or_add_envp_node(&(sh->n_envs), cmd);
+	after_update_new_envp(&(sh->n_export), sh);
 }

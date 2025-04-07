@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 14:41:50 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:14:26 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,29 @@ static void	allocate_new_envp(char **new_envp, char *cmd, int envp_count)
 	}
 }
 
-void	update_envp_array(t_minish *sh, char *cmd)
+void	after_update_new_envp(t_envp **head, t_minish *sh)
 {
-	int		new_count;
+	t_envp	*current;
+	char	*new_name;
 	int		i;
-	char	**new_envp;
 
-	new_count = sh->envp_count + 1;
-	new_envp = (char **)malloc(sizeof(char *) * (new_count + 1));
-	i = -1;
-	while (++i < (sh->envp_count))
-	{
-		new_envp[i] = ft_strdup(sh->envp[i]);
-		if (!new_envp[i])
-		{
-			while (--i >= 0)
-				free(new_envp[i]);
-			free(new_envp);
-			exit(EXIT_FAILURE);
-		}
-	}
-	allocate_new_envp(new_envp, cmd, sh->envp_count);
-	new_envp[sh->envp_count + 1] = NULL;
+	if (!head || !*head)
+		return ;
+	current = *head;
 	free_double_char(sh->envp);
-	sh->envp = new_envp;
+	sh->envp = (char **)malloc(sizeof(char *) * (sh->envp_count + 1));
+	i = 0;
+	while (current)
+	{
+		new_name = ft_strjoin(current->key, "=");
+		if (current->value != NULL)
+			sh->envp[i] = ft_strjoin(new_name, current->value);
+		else
+			sh->envp[i] = ft_strdup(new_name);
+		free(new_name);
+		current = current->next;
+		i++;
+	}
+	sh->envp[i] = NULL;
+	sh->envp_count = f_count_char(sh->envp);
 }
