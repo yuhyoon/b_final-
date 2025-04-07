@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 14:45:22 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 11:27:59 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ typedef struct s_compare
 {
 	char	*src_span;
 	char	*msk_span;
-}t_compare;
+}				t_compare;
 
-typedef struct	s_redrct
+typedef struct s_redrct
 {
 	char	*obj;
 	int		fd;
@@ -136,6 +136,14 @@ typedef struct s_envp
 	struct s_envp	*next;
 }				t_envp;
 
+typedef struct s_env_context
+{
+	char		**cmd;
+	char		*original_cmd;
+	int			index;
+	int			is_name;
+}				t_env_context;
+
 int				*f_exitcode(void);
 void			*ft_malloc(size_t size);
 void			ft_free_all(void);
@@ -158,7 +166,6 @@ int				f_cd_go_back(t_minish *sh);
 int				cd_err_msg(char *location, int exitstatus, int situation);
 int				update_envps(t_minish *sh, char *newpwd, char *oldpwd);
 int				f_update_pwds(t_minish *sh, char *current_pwd);
-void			update_or_add_envps(t_minish *sh, char *cmd);
 int				ft_strlen_delim(char *s, char delim);
 void			init_char_state(t_char_state *state, char *s);
 int				is_whitespace(char c);
@@ -172,7 +179,6 @@ int				store_quote_seq(t_char_state *char_state, int len);
 int				putchar_quote_state_zero(char *current, int fd);
 int				read_store_fd(int fd, int quote_fd);
 int				set_char_state(char *s, t_char_state *char_state);
-
 void			create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh);
 char			*get_submask(t_ready *rdy, char *subsrc, char *mask);
 t_list			*get_compare_list(t_ready *rdy, int len);
@@ -186,7 +192,6 @@ char			*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh);
 int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
 int				get_variable(char *mask, char *src, t_list **head, t_minish *sh);
 char			*valid_env(char *tmp, t_minish *sh);
-
 t_redrct		*init_rdrct(void);
 int				create_rdrct(char *src, char *mask, t_list **head, int *sig_c);
 void			create_text_list(t_ready *rdy, char *src, char *mask, \
@@ -196,7 +201,8 @@ int				get_variable(char *mask, char *src, t_list **head, \
 int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
 char			*valid_env(char *tmp, t_minish *sh);
 int				count_text(char *mask);
-void			handle_heredoc_child(int read_fd, int write_fd, char *delimeter);
+void			handle_heredoc_child(int read_fd, int write_fd, \
+				char *delimeter);
 void			handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
 				int write_fd, int *sig_c);
 void			create_heredoc_pipe(int *read_fd, int *write_fd);
@@ -231,16 +237,12 @@ void			f_sort_and_store_envp(char **envp, t_envp **sorted_envp);
 void			export_err_msg(char *cmds);
 void			print_export(t_envp *lst);
 void			update_or_add_envps(t_minish *sh, char *cmd);
-//before_norm
-void			export_update_or_add(char **cmds, char *original_cmd, t_minish *sh);
-int				process_envp_update(char **cmd, int index, char *original_cmd, int is_name, t_minish *sh);
-int				is_valid_value2(char **cmd, size_t *index_stack, char *original_cmd, int is_name, t_minish *sh);
+void			export_update_or_add(char **cmds, char *original_cmd, \
+				t_minish *sh);
 int				is_valid_name(char *name);
-// int				is_valid_name(char *name);
-// size_t			find_cmd_in_original(char *original_cmd, char *cmd, size_t index_stack);
-// int				handle_name_case(char **cmd, char *original_cmd, int tmp_i, t_minish *sh);
-// int				process_envp_update(char **cmd, char *original_cmd, int is_name, t_minish *sh);
-// void			export_update_or_add(char **cmds, char *original_cmd, t_minish *sh);
+int				process_envp_update(t_env_context *ctx, t_minish *sh);
+int				is_valid_value(t_env_context *ctx, size_t *index_stack, \
+				t_minish *sh);
 int				f_export(t_minish *sh, t_ready *rdy);
 int				f_pwd(void);
 int				f_unset(t_minish *sh, t_ready *rdy);

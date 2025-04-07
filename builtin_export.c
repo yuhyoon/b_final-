@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 01:49:16 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/04 14:17:35 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/06 14:51:43 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	f_export(t_minish *sh, t_ready *rdy)
 	char	**cmds;
 	char	*original_cmd;
 
-	original_cmd = sh->src;
+	original_cmd = rdy->subsrc;
 	cmds = rdy->cmd;
 	size = f_count_char(cmds);
 	if (size == 1)
