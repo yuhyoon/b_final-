@@ -6,22 +6,45 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 01:49:16 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 14:50:32 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:40:39 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
+static int	check_whole_name(char *name)
+{
+	char	*tmp;
+	int		valid;
+	int		first;
+
+	tmp = name;
+	first = ft_isalnum(*tmp);
+	if (!(first == 1 || first == 2 || *tmp == '_'))
+		return (-1);
+	tmp++;
+	while (*tmp)
+	{
+		valid = ft_isalnum(*tmp);
+		if (valid == 0 && *tmp != '_' && *tmp != '=')
+			return (-1);
+		tmp++;
+	}
+	return (0);
+}
+
 int	is_valid_name(char *name)
 {
-	int	valid;
-	int	flag;
-	int	i;
+	int		valid;
+	int		flag;
+	int		i;
+	char	*tmp;
 
 	i = 0;
 	flag = 0;
-	valid = ft_isalnum(name[0]);
-	if (!(valid == 1 || valid == 2 || name[0] == '_'))
+	tmp = name;
+	valid = check_whole_name(tmp);
+	if (valid == -1)
 		return (-1);
 	while (name[i])
 	{

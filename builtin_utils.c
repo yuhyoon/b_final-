@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:22:20 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:43:38 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+int	count_env_list(t_envp *head)
+{
+	int	count;
+
+	count = 0;
+	while (head)
+	{
+		count++;
+		head = head->next;
+	}
+	return (count);
+}
+
+int	f_count_char(char **envp)
+{
+	int	count;
+
+	count = 0;
+	while (envp[count])
+		count++;
+	return (count);
+}
 
 void	free_node_t_envp(t_envp **envp)
 {
@@ -30,16 +53,6 @@ void	free_node_t_envp(t_envp **envp)
 	*envp = NULL;
 }
 
-int	f_count_char(char **envp)
-{
-	int	count;
-
-	count = 0;
-	while (envp[count])
-		count++;
-	return (count);
-}
-
 void	free_double_char(char **double_char)
 {
 	int	i;
@@ -50,4 +63,5 @@ void	free_double_char(char **double_char)
 	while (++i < length)
 		free(double_char[i]);
 	free(double_char);
+	double_char = NULL;
 }

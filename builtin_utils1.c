@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 15:17:06 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:44:07 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	after_update_new_envp(t_envp **head, t_minish *sh)
 		return ;
 	current = *head;
 	free_double_char(sh->envp);
-	sh->envp = (char **)malloc(sizeof(char *) * (sh->envp_count + 1));
+	sh->envp = (char **)malloc(sizeof(char *) * (count_env_list(current) + 1));
+	if (!sh->envp)
+		return ;
 	i = 0;
 	while (current)
 	{

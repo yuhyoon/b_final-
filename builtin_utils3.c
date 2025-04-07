@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 12:22:27 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:43:03 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ void	update_or_add_envp_node(t_envp **head, char *set)
 	char	*key;
 	char	*value;
 	char	**sets;
+	char	*dup_set;
 	int		len;
 
 	len = ft_strlen(set);
-	sets = ft_split(set, '=');
-	key = ft_strdup(sets[0]);
+	dup_set = ft_strdup(set);
+	sets = ft_split(dup_set, '=');
+	free(dup_set);
 	value = NULL;
 	if (sets[1] == NULL)
 	{
@@ -53,10 +55,8 @@ void	update_or_add_envp_node(t_envp **head, char *set)
 		if (!value)
 			return ;
 	}
-	if (update_envp_node(head, key, value) == 1)
-		add_envp_node(head, key, value);
-	free(key);
-	free(value);
+	if (update_envp_node(head, sets[0], value) == 1)
+		add_envp_node(head, sets[0], value);
 	free_double_char(sets);
 }
 

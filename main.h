@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 15:14:30 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:19:03 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,7 @@ int				f_pwd(void);
 int				f_unset(t_minish *sh, t_ready *rdy);
 void			free_node_t_envp(t_envp **envp);
 int				f_count_char(char **envp);
+int				count_env_list(t_envp *head);
 void			free_double_char(char **double_char);
 void			after_update_new_envp(t_envp **head, t_minish *sh);
 void			f_init_env(char **envp, t_envp **n_envps);
