@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 21:10:39 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 13:14:41 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 13:11:37 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	f_unset(t_minish *sh, t_ready *rdy)
 
 	cmds = rdy->cmd;
 	size = f_count_char(cmds);
-	printf("sh->envp_count : %d\n ", sh->envp_count);
 	if (size > 1)
 	{
 		i = 1;
