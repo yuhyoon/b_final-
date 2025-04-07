@@ -172,6 +172,21 @@ int				store_quote_seq(t_char_state *char_state, int len);
 int				putchar_quote_state_zero(char *current, int fd);
 int				read_store_fd(int fd, int quote_fd);
 int				set_char_state(char *s, t_char_state *char_state);
+
+void			create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh);
+char			*get_submask(t_ready *rdy, char *subsrc, char *mask);
+t_list			*get_compare_list(t_ready *rdy, int len);
+t_compare		*create_compare(t_ready *rdy, int cur_idx, int end);
+char			*mask_to_str(int len, char *mask);
+int				ft_ismetas(char *msk);
+char			*create_str_1(t_list **head);
+
+void			expension(t_list *lst, t_minish *sh);
+char			*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh);
+int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
+int				get_variable(char *mask, char *src, t_list **head, t_minish *sh);
+char			*valid_env(char *tmp, t_minish *sh);
+
 t_redrct		*init_rdrct(void);
 int				create_rdrct(char *src, char *mask, t_list **head, int *sig_c);
 void			create_text_list(t_ready *rdy, char *src, char *mask, \

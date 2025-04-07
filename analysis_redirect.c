@@ -32,6 +32,16 @@ void	valid_heredoc(t_redrct *new, int *sig_c)
 	}
 }
 
+int	count_text(char *mask)
+{
+	int	i;
+
+	i = 0;
+	while (mask[i] != PIPE && mask[i] != '\n' && mask[i] != NONE)
+		i++;
+	return (i);
+}
+
 int	create_rdrct(char *src, char *mask, t_list **head, int *sig_c)
 {
 	int			i;

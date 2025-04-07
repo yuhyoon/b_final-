@@ -20,6 +20,8 @@ SRCS 			= main.c \
 				analysis_redirect.c \
 				analysis_quote.c \
 				analysis_syntax.c \
+				analysis_range.c \
+				analysis_range_utils.c \
 				analysis_dollar.c \
 				execute.c \
 				execute_utils.c \
