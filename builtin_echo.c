@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 14:45:32 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:16:09 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	f_print_echo(char **param_list, int *option_off)
 	{
 		write(STDOUT_FILENO, *param_list, ft_strlen(*param_list));
 		param_list++;
-		if (*param_list)
+		if (*param_list && **param_list != '\0')
 			write(STDOUT_FILENO, " ", 1);
 	}
 	if (!*option_off)
