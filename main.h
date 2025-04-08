@@ -302,13 +302,13 @@ void			dengling(void *content, int size_type);
 void			free_minish(t_minish *minish);
 void			free_str_array(char **arr);
 void			free_all_envps(t_minish *sh);
-char			*check_blank(char *mask);
+char			*check_blank(char *start, char *end);
 char			*generate_mask(t_minish *sh);
 int				write_replace_spaces(char *s, int replace_fd);
 int				handle_putchar(t_char_state *char_state, int fd);
 int				set_char_state(char *s, t_char_state *char_state);
 char			*read_maskfd(int mask_fd, int *len);
-void			*parsing(t_minish *sh, int len);
+int				parsing(t_minish *sh, int len);
 int				handle_pipe(t_minish *sh, t_ready *current_rdy, \
 				t_list	**rdrct, int save);
 t_list			*init_parsing_structure(t_list **rdy_head);

@@ -103,8 +103,7 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		if (res == 1)
 		{
-			if (!generate_mask(&sh) || !check_blank(sh.mask) \
-				|| !parsing(&sh, ft_strlen_delim(sh.mask, '\n')))
+			if (!generate_mask(&sh) || parsing(&sh, ft_strlen_delim(sh.mask, '\n')) != ft_strlen_delim(sh.mask, '\n'))
 				free_minish(&sh);
 			else
 				execute(&sh);

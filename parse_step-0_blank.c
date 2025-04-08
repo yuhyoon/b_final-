@@ -87,18 +87,18 @@ char	*putchar_replace(t_minish *sh, t_list *lst, int	fd)
 	return (replace_str);
 }
 */
-char	*check_blank(char *mask)
+char	*check_blank(char *start, char *end)
 {
-	int	len;
 	int	i;
+	int	len;
 
-	len = ft_strlen_delim(mask, '\n');
 	i = 0;
-	while (i < len && mask[i] == 0)
+	len = end - start;
+	while (i < len && start[i] == 0)
 	{
 		i++;
 	}
 	if (i == len)
-		return (NULL);
-	return (mask);
+		return (start);
+	return (NULL);
 }

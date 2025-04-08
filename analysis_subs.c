@@ -10,9 +10,31 @@ void	create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh)
 	rdy->subsrc = ft_substr(src, 0, i);
 	rdy->submsk = get_submask(rdy, rdy->subsrc, mask);
 	rdy->text = get_compare_list(rdy, i);
-	expension(rdy->text, sh);
+	//ft_lstmap(sh, sep_redirect, del_compare);
+	//expension(rdy->text, sh);
 }
+/*
+void	*sep_redirect(void *sh)
+{
+	t_list	*rdylst;
+	t_ready *rdy;
+	t_compare	*cmpr;
 
+	rdylst = ((t_list *)((t_minish *)sh)->ready);
+	while (rdylst)
+	{
+		cmpr = rdy->text;
+		while (cmpr)
+		{
+			if (ft_ismetas() )
+			{}
+			cmpr = cmpr->
+		}
+		rdy = rdy->next;
+	}
+	return ();
+}
+*/
 char	*get_submask(t_ready *rdy, char *subsrc, char *mask)
 {
 	char	*printable_msk;

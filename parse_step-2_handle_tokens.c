@@ -33,23 +33,56 @@ t_list	*init_parsing_structure(t_list **rdy_head)
 	return (*rdy_head);
 }
 
-void	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
+int	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
 {
+	int	save_bckup;
+	t_list	*range;
+	char	*mask;
+
+	save_bckup = save;
+	range = NULL;
+	mask = sh->mask;
 	if (rdy->rdrct != NULL)
 		rdy->rdrct_num = ft_lstsize(rdy->rdrct);
-	create_range_list(rdy, &sh->src[save], &sh->mask[save], sh);
-	rdy->cmd = create_str_2(&rdy->text);
+	while (mask[save] != '\n' && mask[save] != PIPE)
+		save++;
+	if ((save == save_bckup && mask[save] == '\n') || check_blank(&mask[save_bckup], &mask[save]) && mask[save] == '\n')
+	{
+		if (save_bckup != 0)
+			err_syntax(2);
+		return (-1);
+	}
+	else if (check_blank(&mask[save_bckup], &mask[save]))
+	{
+		create_range_list(rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
+	}
+	return (save);
+	//rdy->cmd = create_str_2(&rdy->text);
 }
 
 int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 {
 	t_ready	*next_rdy;
 	t_list	*next_lst;
+	int		save_bckup;
+	char	*mask;
 
+	mask = sh->mask;
 	if (*rdrct != NULL)
 		current_rdy->rdrct_num = ft_lstsize(*rdrct);
-	create_range_list(current_rdy, &sh->src[save], &sh->mask[save], sh);
-	current_rdy->cmd = create_str_2(&current_rdy->text);
+	save_bckup = save;
+	while (mask[save] != '\n' && mask[save] != PIPE)
+		save++;
+	if ((save == save_bckup && mask[save] == PIPE) || check_blank(&mask[save_bckup], &mask[save]) && mask[save] == PIPE)
+	{
+		err_syntax(2);
+		return (9999);
+	}
+	else if (check_blank(&mask[save_bckup], &mask[save]))
+	{
+		create_range_list(current_rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
+	}
+	//current_rdy->cmd = create_str_2(&current_rdy->text);
 	next_rdy = create_rdy();
 	next_rdy->num = current_rdy->num + 1;
 	next_lst = ft_lstnew(next_rdy);
@@ -58,7 +91,7 @@ int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 }
 
 //함수 분리 요망 ! (TOO_MANY_LINES)
-void	*parsing(t_minish *sh, int len)
+int	parsing(t_minish *sh, int len)
 {
 	int		i;
 	t_ready	*rdy;
@@ -86,6 +119,7 @@ void	*parsing(t_minish *sh, int len)
 		else
 			i++;
 	}
-	linked_to_arr(sh, rdy, save);
-	return (sh->ready);
+	if (i == len)
+		i = linked_to_arr(sh, rdy, save);
+	return (i);
 }
