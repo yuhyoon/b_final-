@@ -24,7 +24,7 @@ static char	*heredoc_child_in_while(int write_fd, char *delimeter)
 	}
 	else
 	{
-		if (ft_strncmp(line, delimeter, ft_strlen(delimeter)) == 0)
+		if (ft_strncmp(line, delimeter, (ft_strlen(delimeter) + 1)) == 0)
 		{
 			free(line);
 			return (NULL);
