@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 01:49:16 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/06 14:51:43 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:55:32 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int	f_export(t_minish *sh, t_ready *rdy)
 	original_cmd = rdy->subsrc;
 	cmds = rdy->cmd;
 	size = f_count_char(cmds);
+	*f_exitcode() = 0;
 	if (size == 1)
 		print_export(sh->n_export);
 	else if (size > 1)
 		export_update_or_add(cmds, original_cmd, sh);
-	*f_exitcode() = 0;
-	return (0);
+	if (*f_exitcode() > 0)
+		return (*f_exitcode());
+	return (*f_exitcode());
 }

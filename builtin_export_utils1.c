@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:59:34 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 15:14:36 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:53:45 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	export_err_msg(char *cmds)
 	}
 	ft_putstr_fd("': ", STDERR_FILENO);
 	ft_putstr_fd("not a valid identifier\n", STDERR_FILENO);
+	*f_exitcode() = 1;
 }
 
 void	print_export(t_envp *lst)
