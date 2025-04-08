@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 16:19:03 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/08 03:32:31 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,5 +328,6 @@ void			del_text(void *txt);
 void			del_redrct(void *rd);
 void			del_ready(void *ready);
 void			del_stack(void *st);
+void			*valid_redirect_builtin(t_ready *rdy, t_minish *sh);
 
 #endif
