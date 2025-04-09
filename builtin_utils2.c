@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:01:31 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/29 10:52:34 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/09 01:10:16 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,33 @@ int	add_envp_node(t_envp **head, char *key, char *value)
 	find_insert_position(*head, key, &prev, &current);
 	insert_node(head, new_node, prev, current);
 	return (0);
+}
+
+void	update_or_add_envp_node(t_envp **head, char *set)
+{
+	char	*key;
+	char	*value;
+	char	**sets;
+	char	*dup_set;
+	int		len;
+
+	len = ft_strlen(set);
+	dup_set = ft_strdup(set);
+	sets = ft_split(dup_set, '=');
+	free(dup_set);
+	value = NULL;
+	if (sets[1] == NULL)
+	{
+		if (set[(len - 1)] == '=')
+			value = ft_strdup("\0");
+	}
+	else
+	{
+		value = ft_strdup(sets[1]);
+		if (!value)
+			return ;
+	}
+	if (update_envp_node(head, sets[0], value) == 1)
+		add_envp_node(head, sets[0], value);
+	free_double_char(sets);
 }

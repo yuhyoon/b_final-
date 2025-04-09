@@ -6,58 +6,90 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 16:43:03 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/09 01:10:40 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-char	*f_getenv(char **custom_envp, char *name)
+void	f_init_env(char **envp, t_envp **n_envps)
 {
-	size_t	name_len;
 	int		i;
+	t_envp	*tmp;
 
+	tmp = new_node(envp, 0);
+	*n_envps = tmp;
 	i = 0;
-	if (!name || !custom_envp || ft_strlen(name) == 0)
-		return (NULL);
-	name_len = ft_strlen(name);
-	while (custom_envp[i])
+	while (envp[++i])
 	{
-		if (ft_strncmp(custom_envp[i], name, name_len) == 0 && \
-		custom_envp[i][name_len] == '=')
-			return (&custom_envp[i][name_len + 1]);
-		i++;
+		tmp->next = new_node(envp, i);
+		tmp = tmp->next;
 	}
-	return (NULL);
+	tmp->next = NULL;
 }
 
-void	update_or_add_envp_node(t_envp **head, char *set)
+void	delete_t_envp(t_envp **head, char *key)
 {
-	char	*key;
-	char	*value;
-	char	**sets;
-	char	*dup_set;
-	int		len;
+	t_envp	*current;
+	t_envp	*prev;
 
-	len = ft_strlen(set);
-	dup_set = ft_strdup(set);
-	sets = ft_split(dup_set, '=');
-	free(dup_set);
-	value = NULL;
-	if (sets[1] == NULL)
+	if (!head || !*head)
+		return ;
+	current = *head;
+	prev = NULL;
+	while (current)
 	{
-		if (set[(len - 1)] == '=')
-			value = ft_strdup("\0");
-	}
-	else
-	{
-		value = ft_strdup(sets[1]);
-		if (!value)
+		if (ft_strncmp(current->key, key, (ft_strlen(current->key) + 1)) == 0)
+		{
+			if (prev == NULL)
+				*head = current->next;
+			else
+				prev->next = current->next;
+			free(current->key);
+			free(current->value);
+			free(current);
 			return ;
+		}
+		prev = current;
+		current = current->next;
 	}
-	if (update_envp_node(head, sets[0], value) == 1)
-		add_envp_node(head, sets[0], value);
-	free_double_char(sets);
+}
+
+int	update_t_envp(t_envp *node, char *key, char *value)
+{
+	while (node != NULL)
+	{
+		if (ft_strncmp(node->key, key, ft_strlen(node->key) + 1) == 0)
+		{
+			free(node->value);
+			node->value = ft_strdup(value);
+			return (1);
+		}
+		node = node->next;
+	}
+	return (0);
+}
+
+t_envp	*new_node(char **envp, int idx)
+{
+	t_envp	*first;
+	char	**split_envp;
+	int		count;
+
+	count = f_count_char(envp);
+	first = (t_envp *)malloc(sizeof(t_envp));
+	if (!first)
+		return (NULL);
+	split_envp = ft_split(envp[idx], '=');
+	first->key = ft_strdup(split_envp[0]);
+	if (split_envp[1] == NULL || split_envp[1][0] == '\0')
+		first->value = ft_strdup("\0");
+	else
+		first->value = ft_strdup(split_envp[1]);
+	first->count = count;
+	first->next = NULL;
+	free_double_char(split_envp);
+	return (first);
 }
 
 int	update_envp_node(t_envp **head, char *key, char *value)

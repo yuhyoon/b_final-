@@ -6,11 +6,30 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 16:44:07 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/09 01:10:26 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+char	*f_getenv(char **custom_envp, char *name)
+{
+	size_t	name_len;
+	int		i;
+
+	i = 0;
+	if (!name || !custom_envp || ft_strlen(name) == 0)
+		return (NULL);
+	name_len = ft_strlen(name);
+	while (custom_envp[i])
+	{
+		if (ft_strncmp(custom_envp[i], name, name_len) == 0 && \
+		custom_envp[i][name_len] == '=')
+			return (&custom_envp[i][name_len + 1]);
+		i++;
+	}
+	return (NULL);
+}
 
 static char	*check_name_contains_equal_sign(char *cmd)
 {
