@@ -52,7 +52,7 @@ int	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
 			err_syntax(2);
 		return (-1);
 	}
-	else if (check_blank(&mask[save_bckup], &mask[save]))
+	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
 	{
 		create_range_list(rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
 	}
@@ -78,7 +78,7 @@ int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 		err_syntax(2);
 		return (9999);
 	}
-	else if (check_blank(&mask[save_bckup], &mask[save]))
+	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
 	{
 		create_range_list(current_rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
 	}
