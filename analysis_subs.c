@@ -2,6 +2,7 @@
 
 char	**create_str_3(t_list **head);
 t_list	*get_text_list(t_ready *rdy, int len);
+
 void	create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh)
 {
 	int		i;
@@ -11,8 +12,8 @@ void	create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh)
 	while (mask[i] != '\n' && mask[i] != PIPE)
 		i++;
 	rdy->subsrc = ft_substr(src, 0, i);
-	rdy->submsk = get_submask(rdy, rdy->subsrc, mask);
-	printf("%s\n", rdy->submsk);
+	rdy->submsk = get_submask(rdy->subsrc, mask);
+	// printf("%s\n", rdy->submsk);
 	tmp = get_compare_list(rdy, i);
 	rdy->text = extract_text(tmp);
 	expension(rdy->text, sh);
@@ -44,7 +45,8 @@ t_list *extract_text(t_list *list)
 		return (head);
 }
 
-char	*get_submask(t_ready *rdy, char *subsrc, char *mask)
+// char	*get_submask(t_ready *rdy, char *subsrc, char *mask)
+char	*get_submask(char *subsrc, char *mask)
 {
 	char	*printable_msk;
 	int		i;
@@ -73,9 +75,9 @@ t_list	*get_compare_list(t_ready *rdy, int len)
 	lst = NULL;
 	while (cur_idx < len)
 	{
-		start = strspn(&rdy->submsk[cur_idx], "0");
+		start = ft_strspn(&rdy->submsk[cur_idx], "0");
 		cur_idx += start;
-		end = strcspn(&rdy->submsk[cur_idx], "0");
+		end = ft_strcspn(&rdy->submsk[cur_idx], "0");
 		if (cur_idx == len && end == 0)
 			break ;
 		compare = create_compare(rdy, cur_idx, end);
