@@ -30,11 +30,11 @@ void	free_splited(char **abs)
 
 char	**create_str_2(t_list **head)
 {
-	int		size;
-	char	**str;
 	t_list	*tmp;
-	int		i;
 	char	*subsrc;
+	char	**str;
+	int		i;
+	int		size;
 
 	size = ft_lstsize(*head);
 	str = malloc(sizeof(char *) * (size + 1));
@@ -47,6 +47,6 @@ char	**create_str_2(t_list **head)
 		i++;
 		tmp = tmp->next;
 	}
-	str[i] = '\0';
+	str[i] = NULL;
 	return (str);
 }

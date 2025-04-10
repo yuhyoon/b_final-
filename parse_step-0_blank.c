@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   parse_step-0_blank.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.gyeongsan>     +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:18:27 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/23 17:18:28 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/11 02:56:37 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+char	*check_blank(char *start, char *end)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = end - start;
+	while (i < len && start[i] == 0)
+	{
+		i++;
+	}
+	if (i == len)
+		return (start);
+	return (NULL);
+}
+
 /*
 char	*check_replace(t_minish *sh);
 char	*replace_dollar_to_text(t_minish *sh, int i);
@@ -29,7 +46,8 @@ char	*check_replace(t_minish *sh)
 	while (i < len)
 	{
 		if (sh->src[i] == DOLLAR)
-			lst = ft_lstadd_back(ft_lstnew(replace_dollar_to_text(sh, i)), &lst);
+			lst = ft_lstadd_back( \
+			ft_lstnew(replace_dollar_to_text(sh, i)), &lst);
 		i++;
 	}
 	if (lst != NULL)
@@ -74,7 +92,8 @@ char	*putchar_replace(t_minish *sh, t_list *lst, int	fd)
 		if (sh->mask[i] == DOLLAR)
 		{
 			env_value = (char *)lst->content;
-			if (*env_value == '\0' && (sh->mask[i + 1] == 0 || mask[i + 1] == '\n'))
+			if (*env_value == '\0' && \
+			(sh->mask[i + 1] == 0 || mask[i + 1] == '\n'))
 				write(fd, "1", 1);
 			else
 				write(fd, env_value, ft_strlen(env_value));
@@ -87,18 +106,3 @@ char	*putchar_replace(t_minish *sh, t_list *lst, int	fd)
 	return (replace_str);
 }
 */
-char	*check_blank(char *start, char *end)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = end - start;
-	while (i < len && start[i] == 0)
-	{
-		i++;
-	}
-	if (i == len)
-		return (start);
-	return (NULL);
-}
