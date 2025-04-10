@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:01:31 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/09 01:10:16 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:46:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	add_envp_node(t_envp **head, char *key, char *value)
 
 void	update_or_add_envp_node(t_envp **head, char *set)
 {
-	char	*key;
 	char	*value;
 	char	**sets;
 	char	*dup_set;

@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/09 01:10:26 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:46:20 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,6 @@ char	*f_getenv(char **custom_envp, char *name)
 		i++;
 	}
 	return (NULL);
-}
-
-static char	*check_name_contains_equal_sign(char *cmd)
-{
-	int		i;
-	int		total;
-	char	*new_cmd;
-
-	i = 0;
-	total = ft_strlen(cmd);
-	while (i < total)
-	{
-		if (cmd[i] == '=')
-			return (NULL);
-		i++;
-	}
-	new_cmd = ft_strjoin(cmd, "=");
-	return (new_cmd);
-}
-
-static void	allocate_new_envp(char **new_envp, char *cmd, int envp_count)
-{
-	char	*new_cmd;
-
-	new_envp[envp_count] = ft_strdup(cmd);
-	new_cmd = check_name_contains_equal_sign(cmd);
-	if (new_cmd != NULL)
-	{
-		free(new_envp[envp_count]);
-		new_envp[envp_count] = ft_strdup(new_cmd);
-		free(new_cmd);
-	}
 }
 
 void	after_update_new_envp(t_envp **head, t_minish *sh)

@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/09 23:07:59 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:45:14 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	f_print_echo(char **param_list, int *option_off)
 int	f_check_n_option(char *is_option)
 {
 	int	i;
-	int	len_option;
 
 	i = 1;
 	if (is_option[0] != '-')

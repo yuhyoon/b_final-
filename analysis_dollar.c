@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:42:56 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/03 10:44:09 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:37:10 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	expension(t_list *lst, t_minish *sh)
 {
 	char	*msk_spn;
 	char	*src_spn;
-	int		i;
 	char	*tmp;
 
 	while (lst)
