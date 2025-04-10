@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:18:32 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/03 05:54:50 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:44:56 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*generate_mask(t_minish *sh)
 	mask_fd = open("mask_fd", O_RDONLY);
 	mask = read_maskfd(mask_fd, &len);
 	syntax_result = syntax_analysis(mask, &len);
-	sh->mask = syntax_result2(sh, syntax_result, mask);
+	sh->mask = syntax_result2(syntax_result, mask);
 	close(mask_fd);
 	unlink("mask_fd");
 	return (mask);

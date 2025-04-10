@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/08 03:32:31 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:44:17 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,8 @@ void			init_char_state(t_char_state *state, char *s);
 int				is_whitespace(char c);
 int				is_quote(char c);
 int				ft_ismeta(char *input);
-char			*syntax_result2(t_minish *sh, int result, char *mask);
+// char			*syntax_result2(t_minish *sh, int result, char *mask);
+char			*syntax_result2(int result, char *mask);
 int				syntax_analysis(const char *m, int *len);
 int				valid_meta(int token, char *mask);
 int				valid_quote(char *s, int quote);
@@ -179,7 +180,8 @@ int				putchar_quote_state_zero(char *current, int fd);
 int				read_store_fd(int fd, int quote_fd);
 int				set_char_state(char *s, t_char_state *char_state);
 void			create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh);
-char			*get_submask(t_ready *rdy, char *subsrc, char *mask);
+// char			*get_submask(t_ready *rdy, char *subsrc, char *mask);
+char			*get_submask(char *subsrc, char *mask);
 t_list			*get_compare_list(t_ready *rdy, int len);
 t_list			*extract_text(t_list *lst);
 t_compare		*create_compare(t_ready *rdy, int cur_idx, int end);

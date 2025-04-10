@@ -19,9 +19,10 @@ void	close_pp(t_child_process *child, t_minish *sh)
 		if (child->state == STATE_COMPLETE && child->num == sh->cmd_count)
 			close(child->input_fd);
 	}
-	if (child->bulitin_code == 0 && child->num < sh->cmd_count \
-		&& child->state == STATE_CHECK_RDRCT \
-		|| child->state == STATE_CHECK_PIPE)
+	if (child->bulitin_code == 0 && \
+		child->num < sh->cmd_count && \
+		(child->state == STATE_CHECK_RDRCT || \
+		child->state == STATE_CHECK_PIPE))
 	{
 		close(child->pp[0]);
 		close(child->pp[1]);
