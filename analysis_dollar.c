@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:42:56 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/10 18:37:10 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/11 02:45:43 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh)
 	ft_lstclear(&head, del_text);
 	return (ex_src);
 }
-
 
 int	get_plain_text(char *s1, char *s2, char *src, t_list **head)
 {

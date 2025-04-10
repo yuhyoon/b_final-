@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:15:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/10 18:43:33 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/11 02:44:59 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ t_list	*init_parsing_structure(t_list **rdy_head)
 
 int	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
 {
-	int	save_bckup;
 	char	*mask;
+	int		save_bckup;
 
 	save_bckup = save;
 	mask = sh->mask;
@@ -73,13 +73,16 @@ int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 	while (mask[save] != '\n' && mask[save] != PIPE)
 		save++;
 	if (((save == save_bckup && mask[save] == PIPE) || \
-     (check_blank(&mask[save_bckup], &mask[save]) && mask[save] == PIPE)))
+	(check_blank(&mask[save_bckup], &mask[save]) && mask[save] == PIPE)))
 	{
 		err_syntax(2);
 		return (9999);
 	}
 	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
-		create_range_list(current_rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
+	{
+		create_range_list(current_rdy, &sh->src[save_bckup], \
+		&sh->mask[save_bckup], sh);
+	}
 	//current_rdy->cmd = create_str_2(&current_rdy->text);
 	next_rdy = create_rdy();
 	next_rdy->num = current_rdy->num + 1;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   analysis_subs_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/11 02:47:19 by yuhyoon           #+#    #+#             */
+/*   Updated: 2025/04/11 02:48:45 by hyeyeom          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.h"
 
 char	*mask_to_str(int len, char *mask)
@@ -21,7 +33,7 @@ int	ft_ismetas(char *msk)
 	i = 0;
 	flg = 0;
 	metas = 1;
-	while(i < len)
+	while (i < len)
 	{
 		if ((msk[i] - 48) == DOLLAR || (msk[i] - 48) == PIPE)
 		{
@@ -58,7 +70,7 @@ char	*create_str_1(t_list **head)
 
 	lst = *head;
 	str = NULL;
-	while(lst->next != NULL)
+	while (lst->next != NULL)
 	{
 		cur = lst->content;
 		if (str != NULL)
@@ -71,4 +83,3 @@ char	*create_str_1(t_list **head)
 		str = ft_strdup((char *)lst->content);
 	return (str);
 }
-

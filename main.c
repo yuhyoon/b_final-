@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:21:22 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/04 13:44:18 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/11 02:46:08 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,9 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		if (res == 1)
 		{
-			if (!generate_mask(&sh) || parsing(&sh, ft_strlen_delim(sh.mask, '\n')) != ft_strlen_delim(sh.mask, '\n'))
+			if (!generate_mask(&sh) || \
+				parsing(&sh, ft_strlen_delim(sh.mask, '\n')) != \
+				ft_strlen_delim(sh.mask, '\n'))
 				free_minish(&sh);
 			else
 				execute(&sh);
