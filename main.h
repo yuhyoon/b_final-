@@ -181,10 +181,12 @@ int				set_char_state(char *s, t_char_state *char_state);
 void			create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh);
 char			*get_submask(t_ready *rdy, char *subsrc, char *mask);
 t_list			*get_compare_list(t_ready *rdy, int len);
+t_list			*extract_text(t_list *lst);
 t_compare		*create_compare(t_ready *rdy, int cur_idx, int end);
 char			*mask_to_str(int len, char *mask);
 int				ft_ismetas(char *msk);
 char			*create_str_1(t_list **head);
+void			*sep_rdrct(void *con);
 
 void			expension(t_list *lst, t_minish *sh);
 char			*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh);

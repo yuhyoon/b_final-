@@ -33,6 +33,22 @@ int	ft_ismetas(char *msk)
 	return (flg);
 }
 
+void	*sep_rdrct(void *con)
+{
+	t_compare	*cmpr;
+	char		*msk_spn;
+	char		*src_spn;
+	t_compare	*new_cmpr;
+
+	cmpr = con;
+	msk_spn = ft_strdup(cmpr->msk_span);
+	src_spn = ft_strdup(cmpr->src_span);
+	new_cmpr = malloc(sizeof(t_compare));
+	new_cmpr->msk_span = msk_spn;
+	new_cmpr->src_span = src_spn;
+	return (new_cmpr);
+}
+
 char	*create_str_1(t_list **head)
 {
 	char	*str;

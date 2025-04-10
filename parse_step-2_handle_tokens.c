@@ -55,9 +55,9 @@ int	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
 	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
 	{
 		create_range_list(rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
+		rdy->cmd = create_str_2(&rdy->text);
 	}
 	return (save);
-	//rdy->cmd = create_str_2(&rdy->text);
 }
 
 int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
