@@ -6,30 +6,11 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 13:20:34 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/09 01:14:03 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
-int	cd_err_msg(char *location, int exitstatus, int situation)
-{
-	int	res;
-
-	res = 0;
-	if (situation == 1)
-		f_putstr_fd_error_msg("cd", "No such file or directory", location, \
-			STDERR_FILENO);
-	else if (situation == 2)
-		f_putstr_fd_error_msg("cd", "Permission denied", location, \
-			STDERR_FILENO);
-	else if (situation == 3)
-		f_putstr_fd_error_msg("cd", "No such file or directory", location, \
-			STDERR_FILENO);
-	res = exitstatus;
-	*f_exitcode() = exitstatus;
-	return (res);
-}
 
 int	f_cd(t_minish *sh, t_ready *rdy)
 {
