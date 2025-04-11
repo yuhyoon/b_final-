@@ -80,7 +80,7 @@ int	get_variable(char *mask, char *src, t_list **head, t_minish *sh)
 	t_list	*new;
 
 	i = 1;
-	if (mask[i] - 48 == 0 || mask[i] - 48 == '\n')
+	if (mask[i] == '\0' || mask[i] - 48 == 0 || mask[i] - 48 == '\n')
 		rsult = ft_substr(src, 0, 1);
 	else if (src[i++] == '?')
 		rsult = ft_itoa(*f_exitcode());
