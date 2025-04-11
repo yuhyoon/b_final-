@@ -75,12 +75,12 @@ t_list	*get_compare_list(t_ready *rdy, int len)
 	lst = NULL;
 	while (cur_idx < len)
 	{
-		start = ft_strspn(&rdy->submsk[cur_idx], "0");
-		cur_idx += start;
-		end = ft_strcspn(&rdy->submsk[cur_idx], "0");
-		if (cur_idx == len && end == 0)
-			break ;
+		start = strspn(&rdy->submsk[cur_idx], "0");
+		cur_idx += start;// printf("cur_idx: %d\n", cur_idx);
+		end = strcspn(&rdy->submsk[cur_idx], "0");//printf("end: %d\n", end);
 		compare = create_compare(rdy, cur_idx, end);
+		if (compare == NULL)
+			break;
 		ft_lstadd_back(&lst, ft_lstnew(compare));
 		cur_idx += end;
 	}
@@ -95,9 +95,18 @@ t_compare	*create_compare(t_ready *rdy, int cur_idx, int end)
 
 	src_span = ft_substr(rdy->subsrc, cur_idx, end);
 	msk_span = ft_substr(rdy->submsk, cur_idx, end);
-	cmpare = malloc(sizeof(t_compare));
-	cmpare->src_span = src_span;
-	cmpare->msk_span = msk_span;
+	if (*src_span == '\0')
+	{
+		free(src_span);
+		free(msk_span);
+		return (NULL);
+	}
+	else
+	{
+		cmpare = malloc(sizeof(t_compare));
+		cmpare->src_span = src_span;
+		cmpare->msk_span = msk_span;
+	}
 	return (cmpare);
 }
 
