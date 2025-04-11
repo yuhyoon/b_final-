@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:10 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/10 18:45:14 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/11 16:43:22 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	f_print_echo(char **param_list, int *option_off)
 {
 	while (*param_list)
 	{
-		write(STDOUT_FILENO, *param_list, ft_strlen(*param_list));
+		write(1, *param_list, ft_strlen(*param_list));
 		param_list++;
 		if (*param_list && **param_list != '\0')
-			write(STDOUT_FILENO, " ", 1);
+			write(1, " ", 1);
 	}
 	if (!*option_off)
-		write(STDOUT_FILENO, "\n", 1);
+		write(1, "\n", 1);
 }
 
 int	f_check_n_option(char *is_option)
@@ -74,7 +74,7 @@ unsigned int	f_echo(t_ready *rdy)
 	size = f_count_char(cmds);
 	*f_exitcode() = 0;
 	if (size == 1)
-		write(STDOUT_FILENO, "\n", 1);
+		write(1, "\n", 1);
 	else if (size > 1)
 		process_echo(cmds, size);
 	if (*f_exitcode() > 0)
