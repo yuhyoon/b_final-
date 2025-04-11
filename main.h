@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/10 18:44:17 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/11 16:45:01 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,8 +192,6 @@ void			*sep_rdrct(void *con);
 
 void			expension(t_list *lst, t_minish *sh);
 char			*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh);
-int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
-int				get_variable(char *mask, char *src, t_list **head, t_minish *sh);
 char			*valid_env(char *tmp, t_minish *sh);
 t_redrct		*init_rdrct(void);
 int				create_rdrct(char *src, char *mask, t_list **head, int *sig_c);
