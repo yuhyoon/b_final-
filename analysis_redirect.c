@@ -37,7 +37,7 @@ int	count_text(char *mask)
 	int	i;
 
 	i = 0;
-	while (mask[i] != PIPE && mask[i] != '\n' && mask[i] != NONE)
+	while (mask[i] != PIPE && mask[i] != '\n' && mask[i] != NONE && mask[i] != QUOTE)
 		i++;
 	return (i);
 }
@@ -57,7 +57,7 @@ int	create_rdrct(char *src, char *mask, t_list **head, int *sig_c)
 	while (mask[i] == new->type)
 		i++;
 	new->parts = i;
-	while (mask[i] == NONE)
+	while (mask[i] == NONE || mask[i] == QUOTE)
 		i++;
 	len = count_text(&mask[i]);
 	ft_memset(&mask[i], new->type, len);

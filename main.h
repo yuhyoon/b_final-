@@ -60,7 +60,8 @@ typedef enum s_token
 	IN_RD,
 	OUT_RD,
 	DOLLAR,
-	PIPE
+	PIPE,
+	QUOTE
 }				t_token;
 
 typedef struct s_compare
@@ -89,6 +90,7 @@ typedef struct s_ready
 {
 	char		*subsrc;
 	char		*submsk;
+	char		*newsrc;
 	t_list		*text;
 	t_list		*rdrct;
 	int			rdrct_num;
@@ -199,7 +201,7 @@ void			create_text_list(t_ready *rdy, char *src, char *mask, \
 				t_minish *sh);
 int				get_variable(char *mask, char *src, t_list **head, \
 				t_minish *sh);
-int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
+//int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
 char			*valid_env(char *tmp, t_minish *sh);
 int				count_text(char *mask);
 void			handle_heredoc_child(int read_fd, int write_fd, \

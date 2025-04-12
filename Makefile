@@ -1,4 +1,4 @@
-NAME 			= minishell
+NAME 			= q_minishell
 
 CC 				= cc
 CFLAGS 			= -g #-Wall -Wextra -Werror 
@@ -20,6 +20,7 @@ SRCS 			= main.c \
 				analysis_redirect.c \
 				analysis_quote.c \
 				analysis_syntax.c \
+				new.c \
 				analysis_subs.c \
 				analysis_subs_utils.c \
 				analysis_dollar.c \

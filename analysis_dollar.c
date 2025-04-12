@@ -45,7 +45,7 @@ char	*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh)
 	while (i < len)
 	{
 		if ((msk_spn[i] - 48) == TEXT)
-			i += get_plain_text(&msk_spn[i], "1", &src_spn[i], &head);
+			i += get_plain_text(&msk_spn[i], TEXT, &src_spn[i], &head);
 		else if ((msk_spn[i] - 48) == DOLLAR)
 			i += get_variable(&msk_spn[i], &src_spn[i], &head, sh);
 		else
@@ -56,14 +56,14 @@ char	*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh)
 	return (ex_src);
 }
 
-int	get_plain_text(char *s1, char *s2, char *src, t_list **head)
+int	get_plain_text(char *s1, char s2, char *src, t_list **head)
 {
 	int		i;
 	char	*rsult;
 	t_list	*new;
 
 	i = 0;
-	while ((s1[i] - 48) == (*s2 - 48))
+	while ((s1[i] - 48) == s2)
 		i++;
 	rsult = malloc(sizeof(char) * (i + 1));
 	ft_memcpy(rsult, src, i);

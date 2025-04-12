@@ -12,6 +12,7 @@
 
 #include "main.h"
 
+char	**create_newsrc(t_ready *rdy, char *src, char *mask, t_minish *sh);
 void	*create_rdy(void)
 {
 	t_ready	*rdy;
@@ -53,8 +54,8 @@ int	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
 	}
 	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
 	{
-		create_range_list(rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
-		rdy->cmd = create_str_2(&rdy->text);
+		rdy->cmd = create_newsrc(rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
+		//rdy->cmd = create_str_2(&rdy->text);
 	}
 	return (save);
 }
@@ -80,10 +81,10 @@ int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 	}
 	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
 	{
-		create_range_list(current_rdy, &sh->src[save_bckup], \
+		current_rdy->cmd = create_newsrc(current_rdy, &sh->src[save_bckup], \
 		&sh->mask[save_bckup], sh);
 	}
-	current_rdy->cmd = create_str_2(&current_rdy->text);
+	//current_rdy->cmd = create_str_2(&current_rdy->text);
 	next_rdy = create_rdy();
 	next_rdy->num = current_rdy->num + 1;
 	next_lst = ft_lstnew(next_rdy);

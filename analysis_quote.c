@@ -85,7 +85,7 @@ int	store_quote_seq(t_char_state *char_state, int len)
 					&& ft_ismeta(&(char_state->current[i])) == DOLLAR)
 				ft_putchar_fd(DOLLAR, quote_fd);
 			else if (char_state->current[i] == char_state->quote)
-				ft_putchar_fd(NONE, quote_fd);
+				ft_putchar_fd(QUOTE, quote_fd);
 			else
 				ft_putchar_fd(TEXT, quote_fd);
 		}
