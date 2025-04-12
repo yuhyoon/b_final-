@@ -86,6 +86,8 @@ char	*generate_mask(t_minish *sh)
 	mask = read_maskfd(mask_fd, &len);
 	syntax_result = syntax_analysis(mask, &len);
 	sh->mask = syntax_result2(syntax_result, mask);
+	if (sh->mask == NULL)
+		mask = NULL;
 	close(mask_fd);
 	unlink("mask_fd");
 	return (mask);

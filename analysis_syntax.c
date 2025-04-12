@@ -30,6 +30,8 @@ int	valid_meta(int token, char *mask)
 		while (mask[i + j] == 0 && mask[i + j] != '\n')
 			j++;
 	}
+	else if (token == DOLLAR)
+		max = 2;
 	while (i < max && mask[i] == token)
 		i++;
 	if (i == max)
