@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/11 16:45:01 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 00:10:02 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,6 @@ void			init_char_state(t_char_state *state, char *s);
 int				is_whitespace(char c);
 int				is_quote(char c);
 int				ft_ismeta(char *input);
-// char			*syntax_result2(t_minish *sh, int result, char *mask);
 char			*syntax_result2(int result, char *mask);
 int				syntax_analysis(const char *m, int *len);
 int				valid_meta(int token, char *mask);
@@ -182,8 +181,8 @@ int				store_quote_seq(t_char_state *char_state, int len);
 int				putchar_quote_state_zero(char *current, int fd);
 int				read_store_fd(int fd, int quote_fd);
 int				set_char_state(char *s, t_char_state *char_state);
-void			create_range_list(t_ready *rdy, char *src, char *mask, t_minish *sh);
-// char			*get_submask(t_ready *rdy, char *subsrc, char *mask);
+void			create_range_list(t_ready *rdy, char *src, \
+				char *mask, t_minish *sh);
 char			*get_submask(char *subsrc, char *mask);
 t_list			*get_compare_list(t_ready *rdy, int len);
 t_list			*extract_text(t_list *lst);
@@ -192,10 +191,9 @@ char			*mask_to_str(int len, char *mask);
 int				ft_ismetas(char *msk);
 char			*create_str_1(t_list **head);
 void			*sep_rdrct(void *con);
-
 void			expension(t_list *lst, t_minish *sh);
 char			*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh);
-int	get_plain_text(char *s1, char s2, char *src, t_list **head);
+int				get_plain_text(char *s1, char s2, char *src, t_list **head);
 char			*valid_env(char *tmp, t_minish *sh);
 t_redrct		*init_rdrct(void);
 int				create_rdrct(char *src, char *mask, t_list **head, int *sig_c);
@@ -203,7 +201,6 @@ void			create_text_list(t_ready *rdy, char *src, char *mask, \
 				t_minish *sh);
 int				get_variable(char *mask, char *src, t_list **head, \
 				t_minish *sh);
-//int				get_plain_text(char *s1, char *s2, char *src, t_list **head);
 char			*valid_env(char *tmp, t_minish *sh);
 int				count_text(char *mask);
 void			handle_heredoc_child(int read_fd, int write_fd, \
@@ -335,5 +332,16 @@ void			del_redrct(void *rd);
 void			del_ready(void *ready);
 void			del_stack(void *st);
 void			*valid_redirect_builtin(t_ready *rdy, t_minish *sh);
+void			queue(t_stack *stack, void *data);
+void			*dequeue(t_stack *stack);
+char			**create_newsrc(t_ready *rdy, char *src, \
+				char *mask, t_minish *sh);
+int				e(t_minish *sh, t_ready *rdy);
+char			*get_variable_new(char *mask, char *src, t_minish *sh);
+void			f(char *submsk, char *subsrc, int fd, t_minish *sh);
+int				check_env_value(char *env_value, int fd, \
+				char *submsk, char *subsrc);
+int				pipex_get_size(char *s, int len);
+char			**pipex_splited(char *s_dup, int w, char **abs);
 
 #endif
