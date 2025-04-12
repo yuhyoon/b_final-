@@ -4,6 +4,7 @@ char **create_newsrc(t_ready *rdy, char *src, char *mask, t_minish *sh);
 int e(t_minish *sh, t_ready *rdy);
 char *get_variable_new(char *mask, char *src, t_minish *sh);
 void f(char *submsk, char *subsrc, int fd, t_minish *sh);
+int check_env_value(char *env_value, int fd, char *submsk, char *subsrc);
 int pipex_get_size(char *s, int len);
 char **pipex_splited(char *s_dup, int w, char **abs);
 
