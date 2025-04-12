@@ -6,46 +6,40 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 01:49:16 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/07 16:40:39 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/12 23:35:16 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static int	check_whole_name(char *name)
+static int	check_whole_name(char *name, int before_equal_sign)
 {
-	char	*tmp;
 	int		valid;
 	int		first;
+	int		i;
 
-	tmp = name;
-	first = ft_isalnum(*tmp);
-	if (!(first == 1 || first == 2 || *tmp == '_'))
+	first = ft_isalnum(*name);
+	if (!(first == 1 || first == 2 || *name == '_'))
 		return (-1);
-	tmp++;
-	while (*tmp)
+	i = 0;
+	while (i < before_equal_sign)
 	{
-		valid = ft_isalnum(*tmp);
-		if (valid == 0 && *tmp != '_' && *tmp != '=')
+		valid = ft_isalnum(name[i]);
+		if (valid == 0 && name[i] != '_' && name[i] != '=')
 			return (-1);
-		tmp++;
+		i++;
 	}
 	return (0);
 }
 
 int	is_valid_name(char *name)
 {
-	int		valid;
 	int		flag;
 	int		i;
-	char	*tmp;
+	int		valid;
 
 	i = 0;
 	flag = 0;
-	tmp = name;
-	valid = check_whole_name(tmp);
-	if (valid == -1)
-		return (-1);
 	while (name[i])
 	{
 		if (name[i] == '=')
@@ -55,6 +49,9 @@ int	is_valid_name(char *name)
 		}
 		i++;
 	}
+	valid = check_whole_name(name, i);
+	if (valid == -1)
+		return (-1);
 	if (flag == 1 && name[(i + 1)] != '\0')
 		return (2);
 	if (flag == 0 && name[i] == '\0')
@@ -64,14 +61,12 @@ int	is_valid_name(char *name)
 
 int	process_envp_update(t_env_context *ctx, t_minish *sh)
 {
-	int		tmp_i;
 	char	*new_cmd;
 
-	tmp_i = ctx->index + 2;
 	if (ctx->is_name == -1)
 		return (-1);
 	if (ctx->is_name == 2 || ctx->is_name == 0 || \
-		ctx->original_cmd[tmp_i] == ' ' || *(ctx->cmd + 1) == NULL)
+		*(ctx->cmd + 1) == NULL)
 		update_or_add_envps(sh, *(ctx->cmd));
 	else if (ctx->is_name == 1)
 	{
