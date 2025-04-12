@@ -4,8 +4,7 @@ minishell
 libft/libft.a
 analysis_heredoc_copy.c
 .vscode/settings.json
-_z/test.c
-_z/samples.c
+_z/*
 test.c
 .gitignore
 norm.txt
