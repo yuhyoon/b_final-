@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 13:20:20 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 05:56:17 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	f_putstr_fd_error_msg(char *builtin, char *msg, char *location, int fd)
 	if (msg != NULL)
 		ft_putstr_fd(msg, fd);
 	ft_putstr_fd("\n", fd);
+	*f_exitcode() = 1;
 }
 
 int	f_check_params(char *param1, int length)

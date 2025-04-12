@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 02:12:09 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/11 02:57:06 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/12 23:26:03 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	f_cd_goto(char *location)
 	}
 	else
 		res = cd_err_msg(location, 1, 3);
-	*f_exitcode() = 0;
 	return (res);
 }
 
@@ -95,9 +94,6 @@ int	f_cd_go_back(t_minish *sh)
 
 int	cd_err_msg(char *location, int exitstatus, int situation)
 {
-	int	res;
-
-	res = 0;
 	if (situation == 1)
 		f_putstr_fd_error_msg("cd", "No such file or directory", location, \
 			STDERR_FILENO);
@@ -107,7 +103,6 @@ int	cd_err_msg(char *location, int exitstatus, int situation)
 	else if (situation == 3)
 		f_putstr_fd_error_msg("cd", "No such file or directory", location, \
 			STDERR_FILENO);
-	res = exitstatus;
 	*f_exitcode() = exitstatus;
-	return (res);
+	return (exitstatus);
 }
