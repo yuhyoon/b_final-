@@ -26,7 +26,13 @@ void	sort_io(t_stack *in, t_stack *out, t_ready *rdy)
 		if (rd->type == IN_RD)
 			push(in, rd);
 		else if (rd->type == OUT_RD)
-			push(out, rd);
+		{
+			if (rd->parts == 1)
+				rd->fd = open(rd->obj, O_TRUNC | O_WRONLY | O_CREAT, 0644);
+			else if (rd->parts == 2)
+				rd->fd = open(rdy->rdrct_out->obj, O_APPEND | O_WRONLY | O_CREAT, 0644);
+			push(out, rd);	
+		}
 		n--;
 		tmp = (tmp)->next;
 	}
@@ -41,7 +47,7 @@ void	set_io(t_ready *rdy, t_stack *in, t_stack *out)
 			rdy->rdrct_in->fd = open(rdy->rdrct_in->obj, O_RDONLY);
 	}
 	(rdy)->rdrct_out = (t_redrct *)pop2(out);
-	if (rdy->rdrct_out)
+/*	if (rdy->rdrct_out)
 	{
 		if (rdy->rdrct_out->parts == 1)
 			rdy->rdrct_out->fd = open(rdy->rdrct_out->obj, \
@@ -50,6 +56,7 @@ void	set_io(t_ready *rdy, t_stack *in, t_stack *out)
 			rdy->rdrct_out->fd = open(rdy->rdrct_out->obj, \
 			O_APPEND | O_WRONLY | O_CREAT, 0644);
 	}
+	*/
 }
 
 int	prmssn_rdrct(t_redrct *rdrct)

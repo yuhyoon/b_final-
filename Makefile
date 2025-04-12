@@ -1,4 +1,4 @@
-NAME 			= q_minishell
+NAME 			= rd_minishell
 
 CC 				= cc
 CFLAGS 			= -g #-Wall -Wextra -Werror 
