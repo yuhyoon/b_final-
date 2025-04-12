@@ -1,4 +1,4 @@
-NAME 			= rd_minishell
+NAME 			= minishell
 
 CC 				= cc
 CFLAGS 			= -Wall -Wextra -Werror 
@@ -6,41 +6,25 @@ READLINEFLG 	= -lreadline
 LIBFTA			= ./libft/libft.a
 OBJS			= $(SRCS:.c=.o)
 
-#signal1.c
 SRCS 			= main.c \
-				signals.c \
-				signals_heredoc.c \
 				stack.c \
 				delete.c \
 				error.c \
 				free.c \
+				new.c \
+				new_utils.c \
 				a_static.c \
 				analysis_heredoc.c \
 				analysis_heredoc_utils.c \
 				analysis_redirect.c \
 				analysis_quote.c \
 				analysis_syntax.c \
-				new.c \
 				analysis_subs.c \
 				analysis_subs_utils.c \
 				analysis_dollar.c \
-				execute.c \
-				execute_utils.c \
-				execution_cmd.c \
-				execution_redirect.c \
-				execution_io.c \
-				child_process.c \
-				execution_builtin.c \
-				execution_utils.c \
-				parse_step-0_blank.c \
-				parse_step-1_utils.c \
-				parse_step-1_mask.c \
-				parse_step-2_handle_tokens.c \
-				parse_step-1,2_utils2.c \
-				init_envp.c \
-				builtin_cd.c \
 				builtin_cd_utils1.c \
 				builtin_cd_utils2.c \
+				builtin_cd.c \
 				builtin_echo.c \
 				builtin_export.c \
 				builtin_export_utils1.c \
@@ -54,6 +38,23 @@ SRCS 			= main.c \
 				bulitin_env.c \
 				builtin_exit.c \
 				builtin_exit_utils.c \
+				child_process.c \
+				execute.c \
+				execute_utils.c \
+				execution_cmd.c \
+				execution_redirect.c \
+				execution_io.c \
+				execution_builtin.c \
+				execution_utils.c \
+				init_envp.c \
+				parse_step-0_blank.c \
+				parse_step-1_utils.c \
+				parse_step-1_mask.c \
+				parse_step-2_handle_tokens.c \
+				parse_step-1,2_utils2.c \
+				queue.c \
+				signals.c \
+				signals_heredoc.c
 				
 
 all: 			$(LIBFTA) $(NAME)
@@ -62,11 +63,11 @@ all: 			$(LIBFTA) $(NAME)
 				$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME)			: $(OBJS) $(LIBFTA)
-				make bonus -C libft
 				$(CC) $(CFLAGS) $(OBJS) $(LIBFTA) $(READLINEFLG) -o $(NAME)
 
 $(LIBFTA) : 
 				make -C libft
+				make bonus -C libft
 				cp libft/libft.a .
 
 clean:
