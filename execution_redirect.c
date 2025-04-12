@@ -30,7 +30,7 @@ void	sort_io(t_stack *in, t_stack *out, t_ready *rdy)
 			if (rd->parts == 1)
 				rd->fd = open(rd->obj, O_TRUNC | O_WRONLY | O_CREAT, 0644);
 			else if (rd->parts == 2)
-				rd->fd = open(rdy->rdrct_out->obj, O_APPEND | O_WRONLY | O_CREAT, 0644);
+				rd->fd = open(rd->obj, O_APPEND | O_WRONLY | O_CREAT, 0644);
 			push(out, rd);	
 		}
 		n--;
