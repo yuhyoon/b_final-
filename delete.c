@@ -39,7 +39,13 @@ void	del_ready(void *ready)
 	rdy = ready;
 	if (rdy == NULL)
 		return ;
-	ft_lstclear(&rdy->text, del_text);
+	//ft_lstclear(&rdy->text, del_text);
+	if (rdy->submsk)
+		free(rdy->submsk);
+	if (rdy->subsrc)
+		free(rdy->subsrc);
+	if (rdy->newsrc)
+		free(rdy->newsrc);
 	ft_lstclear(&rdy->rdrct, del_redrct);
 	free_str_array(rdy->cmd);
 	free(rdy);
