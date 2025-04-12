@@ -53,10 +53,7 @@ int	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
 		return (-1);
 	}
 	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
-	{
 		rdy->cmd = create_newsrc(rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
-		//rdy->cmd = create_str_2(&rdy->text);
-	}
 	return (save);
 }
 
@@ -80,11 +77,8 @@ int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 		return (9999);
 	}
 	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
-	{
 		current_rdy->cmd = create_newsrc(current_rdy, &sh->src[save_bckup], \
 		&sh->mask[save_bckup], sh);
-	}
-	//current_rdy->cmd = create_str_2(&current_rdy->text);
 	next_rdy = create_rdy();
 	next_rdy->num = current_rdy->num + 1;
 	next_lst = ft_lstnew(next_rdy);
@@ -92,26 +86,21 @@ int	handle_pipe(t_minish *sh, t_ready *current_rdy, t_list **rdrct, int save)
 	return (1);
 }
 
-//함수 분리 요망 ! (TOO_MANY_LINES)
 int	parsing(t_minish *sh, int len)
 {
 	int		i;
 	t_ready	*rdy;
 	int		save;
 	t_list	*lst;
-	int		sig_c;
 
 	i = 0;
 	save = i;
 	lst = init_parsing_structure(&sh->ready);
-	sig_c = 0;
-	while (i < len)
+	while (i < len && sh->parse_sig == 0)
 	{
-		if (sig_c == 1)
-			return (0);
 		rdy = ((t_ready *)lst->content);
 		if (sh->mask[i] == IN_RD || sh->mask[i] == OUT_RD)
-			i += create_rdrct(&sh->src[i], &sh->mask[i], &rdy->rdrct, &sig_c);
+			i += create_rdrct(&sh->src[i], &sh->mask[i], &rdy->rdrct, &sh->parse_sig);
 		else if (sh->mask[i] == PIPE)
 		{
 			i += handle_pipe(sh, rdy, &rdy->rdrct, save);
