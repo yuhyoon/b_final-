@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 13:52:02 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/26 13:52:32 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/12 23:31:32 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	del_ready(void *ready)
 	rdy = ready;
 	if (rdy == NULL)
 		return ;
-	//ft_lstclear(&rdy->text, del_text);
 	if (rdy->submsk)
 		free(rdy->submsk);
 	if (rdy->subsrc)
