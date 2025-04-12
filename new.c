@@ -61,7 +61,7 @@ void f(char *submsk, char *subsrc, int fd, t_minish *sh)
 		else if (submsk[i] - 48 == DOLLAR)
 		{
 			env_value = get_variable_new(&submsk[i], &subsrc[i], sh);
-			i = check_env_value(env_value, i, subsrc, submsk);
+			i += check_env_value(env_value, fd, &submsk[i], &subsrc[i]);
 			free(env_value);
 		}
 		else if (submsk[i] - 48 == QUOTE || (submsk[i] - 48 > TEXT && submsk[i] - 48 < DOLLAR))
@@ -69,8 +69,11 @@ void f(char *submsk, char *subsrc, int fd, t_minish *sh)
 	}
 }
 
-int check_env_value(char *env_value, int i, char *subsrc, char *submsk)
+int check_env_value(char *env_value, int fd, char *submsk, char *subsrc)
 {
+	int	i;
+
+	i = 0;
 	if (ft_strlen(env_value) == 1 && *env_value == '$')
 		i += write(fd, env_value, ft_strlen(env_value));
 	else if (ft_strlen(env_value) == 0)
