@@ -32,6 +32,7 @@ static char	*heredoc_child_in_while(int write_fd, char *delimeter)
 		write(write_fd, line, ft_strlen(line));
 		write(write_fd, "\n", 1);
 		free(line);
+		line = NULL;
 	}
 	return (line);
 }

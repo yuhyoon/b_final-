@@ -33,7 +33,6 @@ int e(t_minish *sh, t_ready *rdy)
 {
 	int newsrc_fd;
 	t_char_state char_state;
-	char *src_regnrte;
 	int len;
 
 	newsrc_fd = open("newsrc_fd", O_RDWR | O_CREAT | O_TRUNC, 0644);
@@ -102,7 +101,8 @@ char *get_variable_new(char *mask, char *src, t_minish *sh)
 		rsult = ft_itoa(*f_exitcode());
 	else if (mask[--i] - 48 == QUOTE)
 	{
-		rsult = ft_substr(src, ++i, (ft_strspn(&mask[i], "1") - 1));
+		++i;
+		rsult = ft_substr(src, i, (ft_strspn(&mask[i], "1") - 1));
 	}
 	else
 	{
