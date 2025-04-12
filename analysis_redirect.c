@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analysis_redirect.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:59:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/26 13:37:28 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/12 23:32:12 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	count_text(char *mask)
 	int	i;
 
 	i = 0;
-	while (mask[i] != PIPE && mask[i] != '\n' && mask[i] != NONE && mask[i] != QUOTE)
+	while (mask[i] != PIPE && mask[i] != '\n' && \
+		mask[i] != NONE && mask[i] != QUOTE)
 		i++;
 	return (i);
 }

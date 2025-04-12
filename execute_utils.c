@@ -29,7 +29,9 @@ void	redirect_input_b(t_ready *rdy, int *io)
 
 void	redirect_output_b(t_ready *rdy, int *io)
 {
-	int	save_out;
+	int			save_out;
+	t_list		*lst;
+	t_redrct	*rdrct;
 
 	io[1] = STDOUT_FILENO;
 	if (rdy->rdrct_out)
@@ -38,7 +40,14 @@ void	redirect_output_b(t_ready *rdy, int *io)
 		dup2(rdy->rdrct_out->fd, STDOUT_FILENO);
 		rdy->output = rdy->rdrct_out->fd;
 		io[1] = save_out;
-		close(rdy->rdrct_out->fd);
+	}
+	lst = rdy->rdrct;
+	while (lst)
+	{
+		rdrct = (t_redrct *)(lst->content);
+		if (rdrct && rdrct->fd > 2)
+			close(rdrct->fd);
+		lst = lst->next;
 	}
 }
 
