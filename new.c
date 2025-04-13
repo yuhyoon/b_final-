@@ -100,7 +100,10 @@ char	*get_variable_new(char *mask, char *src, t_minish *sh)
 	char	*rsult;
 
 	i = 1;
-	if (mask[i] == '\0' || mask[i] - 48 == 0 || mask[i] - 48 == '\n')
+	if (src[i] == '\0' || \
+			src[i] == ' ' || \
+			src[i] == '\"' || \
+			src[i] == '\n')
 		rsult = ft_substr(src, 0, 1);
 	else if (src[i++] == '?')
 		rsult = ft_itoa(*f_exitcode());
