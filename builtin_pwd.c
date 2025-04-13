@@ -6,11 +6,11 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:59:30 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/05 13:16:13 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:38:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 int	f_pwd(void)
 {

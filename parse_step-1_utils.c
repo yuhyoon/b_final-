@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_step-1_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyoon <yuhyoon@student.42.gyeongsan>     +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:18:37 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/03/26 14:11:55 by yuhyoon          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:38:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 int	ft_strlen_delim(char *s, char delim)
 {

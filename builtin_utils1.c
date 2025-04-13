@@ -6,11 +6,11 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:31:38 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/10 18:46:20 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:38:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 char	*f_getenv(char **custom_envp, char *name)
 {

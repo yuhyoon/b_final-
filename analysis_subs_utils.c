@@ -6,11 +6,11 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 02:47:19 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/11 02:48:45 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:38:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 char	*mask_to_str(int len, char *mask)
 {

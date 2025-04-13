@@ -6,11 +6,11 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:58:51 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/12 23:06:07 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:38:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 void	sort_io(t_stack *in, t_stack *out, t_ready *rdy)
 {

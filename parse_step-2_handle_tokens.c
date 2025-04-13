@@ -6,13 +6,12 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:15:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/13 16:25:20 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:41:58 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
-char	**create_newsrc(t_ready *rdy, char *src, char *mask, t_minish *sh);
 void	*create_rdy(void)
 {
 	t_ready	*rdy;
@@ -53,7 +52,8 @@ int	linked_to_arr(t_minish *sh, t_ready *rdy, int save)
 		return (-1);
 	}
 	else if (check_blank(&mask[save_bckup], &mask[save]) == NULL)
-		rdy->cmd = create_newsrc(rdy, &sh->src[save_bckup], &sh->mask[save_bckup], sh);
+		rdy->cmd = create_newsrc(rdy, &sh->src[save_bckup], \
+			&sh->mask[save_bckup], sh);
 	return (save);
 }
 

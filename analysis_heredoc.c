@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 static char	*heredoc_child_in_while(int write_fd, char *delimeter)
 {
@@ -35,7 +35,8 @@ static char	*heredoc_child_in_while(int write_fd, char *delimeter)
 	return (line);
 }
 
-void	handle_heredoc_child(int read_fd, int write_fd, char *delimeter, t_minish *sh)
+void	handle_heredoc_child(int read_fd, int write_fd, \
+	char *delimeter, t_minish *sh)
 {
 	char	*line;
 

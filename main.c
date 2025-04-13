@@ -6,11 +6,11 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:21:22 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/13 15:21:00 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:38:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 void	init_minish(t_minish *sh, char **envp)
 {
@@ -94,6 +94,7 @@ int	main(int ac, char **av, char **envp)
 	t_minish	sh;
 	int			res;
 
+	set_signal(before_readline);
 	if (ac > 1)
 		exit(EXIT_FAILURE);
 	init_minish(&sh, envp);

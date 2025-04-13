@@ -6,11 +6,11 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 23:40:21 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/12 23:44:42 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:42:35 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 char	**create_newsrc(t_ready *rdy, char *src, char *mask, t_minish *sh)
 {
@@ -100,7 +100,6 @@ char	*get_variable_new(char *mask, char *src, t_minish *sh)
 	char	*rsult;
 
 	i = 1;
-
 	if (src[i] == '\0' || \
 			src[i] == ' ' || \
 			src[i] == '\n' || \

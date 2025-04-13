@@ -62,7 +62,7 @@ all: 			$(LIBFTA) $(NAME)
 %.o: %.c
 				$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME)			: $(OBJS) $(LIBFTA)
+$(NAME) : 		$(OBJS) $(LIBFTA)
 				$(CC) $(CFLAGS) $(OBJS) $(LIBFTA) $(READLINEFLG) -o $(NAME)
 
 $(LIBFTA) : 

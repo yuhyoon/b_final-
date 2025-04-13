@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   a_static.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyeom <hyeyeom@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:57:53 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/03/28 17:58:28 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 00:38:59 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "minishell.h"
 
 int	*f_exitcode(void)
 {
