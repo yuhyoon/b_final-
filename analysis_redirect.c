@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:59:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/12 23:32:12 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 13:38:29 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_redrct	*init_rdrct(void)
 	t_redrct	*rdrct;
 
 	rdrct = malloc(sizeof(t_redrct));
-	ft_memset(rdrct, 0, sizeof(rdrct));
+	ft_memset(rdrct, 0, sizeof(t_redrct));
 	return (rdrct);
 }
 
