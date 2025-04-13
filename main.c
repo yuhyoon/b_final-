@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:21:22 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/11 02:46:08 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 15:21:00 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	read_input(t_minish *sh)
 	sh->src = ft_strdup(input);
 	add_history(sh->src);
 	free(input);
+	sh->parse_sig = 0;
 	return (1);
 }
 
