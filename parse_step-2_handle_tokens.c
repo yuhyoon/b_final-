@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:15:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/13 13:05:02 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 15:20:28 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	parsing(t_minish *sh, int len)
 	i = 0;
 	save = i;
 	lst = init_parsing_structure(&sh->ready);
-	sh->parse_sig = 0;
 	while (i < len && sh->parse_sig == 0)
 	{
 		rdy = ((t_ready *)lst->content);
