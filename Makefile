@@ -1,7 +1,7 @@
 NAME 			= minishell
 
 CC 				= cc
-CFLAGS 			= -g -Wall -Wextra -Werror 
+CFLAGS 			= -Wall -Wextra -Werror 
 READLINEFLG 	= -lreadline
 LIBFTA			= ./libft/libft.a
 OBJS			= $(SRCS:.c=.o)
@@ -80,15 +80,6 @@ fclean:
 				rm -f libft.a
 				rm -f .cache_exists		
 				make fclean -C libft
-
-VALGRIND_LOG = valgrind_log.txt
-
-run: 			$(NAME) clean
-				valgrind --leak-check=full \
-				--show-leak-kinds=all \
-				--suppressions=suppression_readline.supp \
-				--show-reachable=yes \
-				--track-fds=yes ./$(NAME) 
 
 re: 			fclean all
 

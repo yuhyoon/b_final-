@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/14 00:37:45 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/14 01:00:02 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,8 @@ char			*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh);
 int				get_plain_text(char *s1, char s2, char *src, t_list **head);
 char			*valid_env(char *tmp, t_minish *sh);
 t_redrct		*init_rdrct(void);
-int				create_rdrct(char *src, char *mask, t_list **head, t_minish *sh);
+int				create_rdrct(char *src, char *mask, t_list **head, \
+				t_minish *sh);
 void			create_text_list(t_ready *rdy, char *src, char *mask, \
 				t_minish *sh);
 int				get_variable(char *mask, char *src, t_list **head, \
