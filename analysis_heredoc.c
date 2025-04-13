@@ -35,7 +35,7 @@ static char	*heredoc_child_in_while(int write_fd, char *delimeter)
 	return (line);
 }
 
-void	handle_heredoc_child(int read_fd, int write_fd, char *delimeter)
+void	handle_heredoc_child(int read_fd, int write_fd, char *delimeter, t_minish *sh)
 {
 	char	*line;
 
@@ -50,6 +50,8 @@ void	handle_heredoc_child(int read_fd, int write_fd, char *delimeter)
 		free(line);
 	}
 	close(write_fd);
+	free_all_envps(sh);
+	free_minish(sh);
 	exit(0);
 }
 
@@ -64,7 +66,7 @@ void	create_heredoc_pipe(int *read_fd, int *write_fd)
 }
 
 void	handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
-	int write_fd, int *sig_c)
+	int write_fd, t_minish *sh)
 {
 	int	status;
 
@@ -73,7 +75,7 @@ void	handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
 		exit(EXIT_FAILURE);
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 130)
 	{
-		*sig_c = 1;
+		sh->parse_sig = 1;
 		rdrct->fd = read_fd;
 		close(read_fd);
 		restore_terminal();
@@ -86,10 +88,9 @@ void	handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
 		exit(EXIT_FAILURE);
 	}
 	rdrct->fd = read_fd;
-	set_signal(before_readline);
 }
 
-void	f_heredoc(t_redrct *rdrct, int *sig_c)
+void	f_heredoc(t_redrct *rdrct, t_minish *sh)
 {
 	pid_t	pid;
 	int		read_fd;
@@ -101,7 +102,7 @@ void	f_heredoc(t_redrct *rdrct, int *sig_c)
 	if (pid == -1)
 		exit(EXIT_FAILURE);
 	if (pid == 0)
-		handle_heredoc_child(read_fd, write_fd, rdrct->obj);
+		handle_heredoc_child(read_fd, write_fd, rdrct->obj, sh);
 	else
-		handle_heredoc_parent(rdrct, read_fd, write_fd, sig_c);
+		handle_heredoc_parent(rdrct, read_fd, write_fd, sh);
 }

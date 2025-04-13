@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:15:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/13 15:20:28 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 16:25:20 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	parsing(t_minish *sh, int len)
 	{
 		rdy = ((t_ready *)lst->content);
 		if (sh->mask[i] == IN_RD || sh->mask[i] == OUT_RD)
-			i += create_rdrct(&sh->src[i], &sh->mask[i], &rdy->rdrct, &sh->parse_sig);
+			i += create_rdrct(&sh->src[i], &sh->mask[i], &rdy->rdrct, sh);
 		else if (sh->mask[i] == PIPE)
 		{
 			i += handle_pipe(sh, rdy, &rdy->rdrct, save);

@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:21:59 by hyeyeom           #+#    #+#             */
-/*   Updated: 2025/04/13 00:10:02 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 16:25:42 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ char			*get_ex_src(char *msk_spn, char *src_spn, t_minish *sh);
 int				get_plain_text(char *s1, char s2, char *src, t_list **head);
 char			*valid_env(char *tmp, t_minish *sh);
 t_redrct		*init_rdrct(void);
-int				create_rdrct(char *src, char *mask, t_list **head, int *sig_c);
+int				create_rdrct(char *src, char *mask, t_list **head, t_minish *sh);
 void			create_text_list(t_ready *rdy, char *src, char *mask, \
 				t_minish *sh);
 int				get_variable(char *mask, char *src, t_list **head, \
@@ -204,11 +204,11 @@ int				get_variable(char *mask, char *src, t_list **head, \
 char			*valid_env(char *tmp, t_minish *sh);
 int				count_text(char *mask);
 void			handle_heredoc_child(int read_fd, int write_fd, \
-				char *delimeter);
+				char *delimeter, t_minish *sh);
 void			handle_heredoc_parent(t_redrct *rdrct, int read_fd, \
-				int write_fd, int *sig_c);
+				int write_fd, t_minish *sh);
 void			create_heredoc_pipe(int *read_fd, int *write_fd);
-void			f_heredoc(t_redrct *rdrct, int *sig_c);
+void			f_heredoc(t_redrct *rdrct, t_minish *sh);
 void			restore_terminal(void);
 void			close_fd(int fd);
 int				update_envps(t_minish *sh, char *newpwd, char *oldpwd);

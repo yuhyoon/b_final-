@@ -6,7 +6,7 @@
 /*   By: hyeyeom <hyeyeom@42student.gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:59:33 by yuhyoon           #+#    #+#             */
-/*   Updated: 2025/04/13 13:38:29 by hyeyeom          ###   ########.fr       */
+/*   Updated: 2025/04/13 16:25:07 by hyeyeom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ t_redrct	*init_rdrct(void)
 	return (rdrct);
 }
 
-void	valid_heredoc(t_redrct *new, int *sig_c)
+void	valid_heredoc(t_redrct *new, t_minish *sh)
 {
 	if (new->parts == 2 && new->type == IN_RD)
 	{
 		if (!(new->obj) || ft_strlen(new->obj) < 1)
 			err_syntax(2);
 		else
-			f_heredoc(new, sig_c);
+			f_heredoc(new, sh);
 	}
 }
 
@@ -43,7 +43,7 @@ int	count_text(char *mask)
 	return (i);
 }
 
-int	create_rdrct(char *src, char *mask, t_list **head, int *sig_c)
+int	create_rdrct(char *src, char *mask, t_list **head, t_minish *sh)
 {
 	int			i;
 	t_redrct	*new;
@@ -66,7 +66,7 @@ int	create_rdrct(char *src, char *mask, t_list **head, int *sig_c)
 	ft_memcpy(str, &src[i], len);
 	str[len] = '\0';
 	new->obj = str;
-	valid_heredoc(new, sig_c);
+	valid_heredoc(new, sh);
 	ft_lstadd_back(head, lst);
 	return (i + len);
 }
