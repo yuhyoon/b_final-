@@ -29,15 +29,14 @@ size_t	ft_strspn(const char *s1, const char *s2)
 	ss1 = (char *)s1;
 	ss2 = (char *)s2;
 	cnt = 0;
-	while (*s1)
+	while (ss1[cnt])
 	{
-		if (ft_strchr(ss2, *ss1) != NULL)
+		if (ft_strchr(ss2, ss1[cnt]) != NULL)
 		{
 			cnt++;
-			s1++;
 		}
 		else
-			return (cnt);
+			break ;
 	}
 	return (cnt);
 }

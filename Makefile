@@ -1,7 +1,7 @@
 NAME 			= minishell
 
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror 
+CFLAGS 			= -g -Wall -Wextra -Werror 
 READLINEFLG 	= -lreadline
 LIBFTA			= ./libft/libft.a
 OBJS			= $(SRCS:.c=.o)

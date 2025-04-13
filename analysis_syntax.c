@@ -54,7 +54,7 @@ int	syntax_analysis(const char *m, int *len)
 	meta = 0;
 	while (i < *len && err_flg == 0)
 	{
-		if (mask[i] > 1 && mask[i] != '\n')
+		if (mask[i] > 1 && mask[i] != '\n' && mask[i] != QUOTE)
 			meta = mask[i];
 		if (meta > 0)
 		{

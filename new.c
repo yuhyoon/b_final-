@@ -100,17 +100,18 @@ char	*get_variable_new(char *mask, char *src, t_minish *sh)
 	char	*rsult;
 
 	i = 1;
+
 	if (src[i] == '\0' || \
 			src[i] == ' ' || \
-			src[i] == '\"' || \
-			src[i] == '\n')
+			src[i] == '\n' || \
+			(src[i] == '\"' && mask[i + 1] - 48 != TEXT))
 		rsult = ft_substr(src, 0, 1);
 	else if (src[i++] == '?')
 		rsult = ft_itoa(*f_exitcode());
 	else if (mask[--i] - 48 == QUOTE)
 	{
 		++i;
-		rsult = ft_substr(src, i, (ft_strspn(&mask[i], "1") - 1));
+		rsult = ft_substr(src, i, (ft_strspn(&mask[i], "1")));
 	}
 	else
 	{
